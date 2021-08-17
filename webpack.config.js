@@ -66,7 +66,7 @@ export default {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: `Партнёрская программа Осьминожки`,
+      title: `Осьминожки`,
       template: './public/index.html',
       favicon: './public/img/favicon.png'
     })

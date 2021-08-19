@@ -13,7 +13,7 @@ const outputDirectory = 'dist';
 
 export default {
   entry: {
-    main: path.resolve(__dirname, `./src/index.js`)
+    main: path.resolve(__dirname, `./src/index.tsx`)
   },
   output: {
     path: path.join(__dirname, outputDirectory),
@@ -26,7 +26,20 @@ export default {
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`,
-        }
+          options: {
+            presets: [
+              ['@babel/preset-env', { targets: "defaults" }]
+            ]
+          }
+        },
+      },
+      {
+        test: /\.(tsx|ts)?$/,
+        loader: `ts-loader`
+      },
+      {
+        test: /\.md$/,
+        use: "raw-loader",
       },
       {
         test: /\.s[ac]ss$/,

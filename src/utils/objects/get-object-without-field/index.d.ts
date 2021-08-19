@@ -1,0 +1,1 @@
+export function getObjectWithoutField<T>(obj: T, field: string): T;

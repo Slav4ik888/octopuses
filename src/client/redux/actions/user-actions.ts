@@ -8,8 +8,7 @@ import { Dispatch } from '../redux-types'
 // import { autoLinkClick } from '../../../utils/files/auto-link-click'
 import logger from '../../utils/client-logger/client-logger'
 // Types & Consts
-import { SignupType, UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user'
-import { MessageType, WhoInProfile } from '../../../types/types'
+import { UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user'
 
 
 const api = axios.create({

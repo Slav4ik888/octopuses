@@ -1,5 +1,6 @@
 import { uiActionType, userActionType, dataActionType } from './action-types';
-import { Message, Errors } from '../../types/types';
+import { Message } from '../../types/messages';
+import { Errors } from '../../types/results';
 import { UserProfile, UserStatusType, AdminUsersByStatus } from '../../types/user';
 
 

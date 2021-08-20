@@ -14,8 +14,8 @@
 html,
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f7f4ee;
   height: 100%;
+  margin: 0;
 }
 
 /* ГЛАВНАЯ СТРАНИЦА - для App */

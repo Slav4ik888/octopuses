@@ -6,22 +6,21 @@ import "regenerator-runtime/runtime";
 import { Provider } from 'react-redux';
 import store from './client/redux/store.js';
 // MUI Stuff
-// import { ThemeProvider } from '@material-ui/core/styles';
-// import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import themeFile from './client/utils/themes/theme';
 // Components
 import App from './client/app';
 
 
-// const theme = createMuiTheme(themeFile);
+const theme = createTheme(themeFile);
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <ThemeProvider theme={theme}> */}
+    <ThemeProvider theme={theme}>
       <App />
-    {/* </ThemeProvider> */}
+    </ThemeProvider>
   </Provider>
   , document.getElementById('root'));
 
 
-// git add . && git commit -m "start server" && git push -u origin master
+// git add . && git commit -m "add Mui v.5 & start <Signup>" && git push -u origin master

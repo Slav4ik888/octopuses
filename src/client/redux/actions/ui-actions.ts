@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from '../redux-types';
 import { uiActionType } from '../action-types';
-import { Errors, Message } from '../../../types/types';
+import { Errors } from '../../../types/results';
+import { Message } from '../../../types/messages';
 // Functions
 // import { setAcceptCookie as setAcceptCookieToLocalStorage } from '../../../utils/auth/accept-cookie/accept-cookie';
 import logger from '../../utils/client-logger/client-logger';

@@ -13,9 +13,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 // Components
-// import LogoBtn from '../../components/buttons/logo-btn/logo-btn';
+import GettingPermission from '../../components/auth/permissions/getting-permissions-container/getting-permissions-container';
 // Types & Consts
-// import { LogoBtnType } from '../../../types/btn';
+import { Errors } from '../../../types/results';
 import { RouteType } from '../../../types/types';
 
 
@@ -35,10 +35,23 @@ function Copyright(props: any) {
 
 
 type Props = {
-
+  errors: Errors;
+  setErrors: (errors: Errors) => void;
 };
 
-const SignUp: React.FC<Props> = () => {
+const SignUp: React.FC<Props> = ({errors, setErrors }) => {
+
+  // Согласие пользователя на обр перс данных
+  const [permissions, setPermissions] = React.useState(false);
+
+  // Согласие на обработку данных
+  const handlePermisson = (newChecks: { policy: boolean, sending: boolean }) => {
+    const { policy, sending } = newChecks;
+    const errorPermissions = [policy, sending].filter(v => v).length === 1;
+    setPermissions(errorPermissions);
+  };
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,6 +66,7 @@ const SignUp: React.FC<Props> = () => {
       confirmPassword: data.get(`confirmPassword`),
     });
   };
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -76,28 +90,52 @@ const SignUp: React.FC<Props> = () => {
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField label="Выберите город" name="locality" required fullWidth type="text" autoComplete="locality" autoFocus />
+              <TextField
+                label="Выберите город" name="locality" required fullWidth
+                type="text" autoComplete="locality" autoFocus
+              />
             </Grid>
             <Grid item xs={12}>
-              <TextField label="Фамилия" name="secondName" fullWidth autoComplete="sName" />
+              <TextField
+                label="Фамилия" name="secondName" fullWidth autoComplete="sName"
+                helperText={errors?.secondName} error={errors?.secondName ? true : false}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField label="Имя" name="name" required fullWidth autoComplete="fname" />
+              <TextField
+                label="Имя" name="name" required fullWidth autoComplete="fname"
+                helperText={errors?.name} error={errors?.name ? true : false}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField label="Отчество" name="lastName" fullWidth autoComplete="lname" />
+              <TextField
+                label="Отчество" name="lastName" fullWidth autoComplete="lname"
+                helperText={errors?.lastName} error={errors?.lastName ? true : false}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField label="Email" name="email" type="email" required fullWidth autoComplete="email" />
+              <TextField
+                label="Email" name="email" type="email" required fullWidth autoComplete="email"
+                helperText={errors?.email} error={errors?.email ? true : false}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField label="Номер телефона" name="mobileNumber" required fullWidth autoComplete="phone" />
+              <TextField
+                label="Номер телефона" name="mobileNumber" required fullWidth autoComplete="phone"
+                helperText={errors?.mobileNumber} error={errors?.mobileNumber ? true : false}
+              />
             </Grid>
             <Grid item xs={12}  sm={6}>
-              <TextField label="Пароль" name="password" type="password" required fullWidth autoComplete="current-password" />
+              <TextField
+                label="Пароль" name="password" type="password" required fullWidth autoComplete="current-password"
+                helperText={errors?.password} error={errors?.password ? true : false}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField label="Подтвердите пароль" name="confirmPassword" type="password" required fullWidth />
+              <TextField
+                label="Подтвердите пароль" name="confirmPassword" type="password" required fullWidth
+                helperText={errors?.confirmPassword} error={errors?.confirmPassword ? true : false}
+              />
             </Grid>
             
             <Grid item xs={12}>
@@ -117,6 +155,10 @@ const SignUp: React.FC<Props> = () => {
               </Link>
             </Grid>
           </Grid>
+
+          <GettingPermission onPermission={handlePermisson} />
+          {/* <ActionMain type={ToggleLoginSignup.SIGNUP} onSubmit={handleSubmit} />
+          <ActionHelps type={ToggleLoginSignup.SIGNUP } /> */}
         </Box>
       </Box>
       <Copyright sx={{ mt: 5 }} />

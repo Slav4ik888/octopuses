@@ -5,9 +5,13 @@ import { MessageType } from './messages';
 export interface Errors {
   general?: string;
   permissions?: string;
-  companyName?: string;
+  name?: string;
+  secondName?: string;
+  lastName?: string;
   email?: string;
+  mobileNumber?: string;
   password?: string;
+  confirmPassword?: string;
 };
 
 export type Validation = {

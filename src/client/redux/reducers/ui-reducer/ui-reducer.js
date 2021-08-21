@@ -1,5 +1,5 @@
 // Functions
-import { extend } from '../../../../utils/objects/objects.js';
+import { extend } from '../../../../utils/objects/objects/objects.js';
 import { getScreenFormats } from '../../../utils/screens/screens.js';
 // Types
 import { uiActionType } from '../../action-types.ts';

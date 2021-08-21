@@ -1,5 +1,5 @@
 // Functions
-import { extend } from '../../../../utils/objects/objects.js';
+import { extend } from '../../../../utils/objects/objects/objects.js';
 // Types
 import { userActionType } from '../../action-types.ts';
 // import { StateUser } from '../redux-types'

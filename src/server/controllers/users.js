@@ -1,11 +1,16 @@
 import { admin, db } from '../firebase/admin.js';
 import { auth } from '../firebase/fire.js';
+// Functions
+import { loggerUser } from '../loggers/index.js';
 
 
 export async function userSignup(ctx, next) {
+  const email = ctx.request.body.email;
   try {
+    loggerUser.info(`[userSignup] - start ${email}`);
+
     const newUser = {
-      email:           ctx.request.body.email,
+      email,
       name:            ctx.request.body.name || "",
       secondName:      ctx.request.body.secondName || "",
       lastName:        ctx.request.body.lastName || "",
@@ -26,6 +31,7 @@ export async function userSignup(ctx, next) {
     if (docs.length) {
       ctx.status = 400;
       ctx.body = { email: `Этот email уже занят` };
+      return;
     }
 
     // Создаём нового пользователя
@@ -45,15 +51,19 @@ export async function userSignup(ctx, next) {
     const sessionCookie = await admin.auth().createSessionCookie(idToken, { expiresIn });
     const options = { maxAge: expiresIn, httpOnly: true, path: '/' };
     ctx.cookies.set('session', sessionCookie, options);
-    
 
     ctx.body = { status: 'ok' };
+    loggerUser.info(`[userSignup] - ${email} successfully!`);
   }
-  catch (e) {
-    console.log(e);
+  catch (err) {
+    loggerUser.error(`[userSignup] - ${email - err}`);
+    ctx.status = 500;
+    ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
   }
 }
 
+
+// TESTING
 
 export async function hello(ctx, next) {
   console.log(`function hello!`);

@@ -1,11 +1,16 @@
 import Router from 'koa-router';
-// import cookie from 'koa-cookie';
+import * as ui from '../../controllers/ui.js';
 import * as u from '../../controllers/users.js';
+
+// import cookie from 'koa-cookie';
+// router.use(cookie());
+
 
 const router = new Router({ prefix: '/api' });
 
-// router.use(cookie());
 
+// UI
+router.get(`/getPolicy`, ui.getPolicy);
 
 // USERS
 router.post(`/userSignup`, u.userSignup);

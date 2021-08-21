@@ -1,5 +1,5 @@
 // Functions
-import { extend } from '../../../../utils/objects/objects.js';
+import { extend } from '../../../../utils/objects/objects/objects.js';
 // Types
 import { dataActionType } from '../../action-types.ts';
 import { UserStatusType } from '../../../../types/user.ts';

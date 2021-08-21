@@ -26,6 +26,11 @@ export enum Role {
 // ========================================= //
 
 
+// Возможные города для регистрации
+export enum Location {
+  IRKUTSK = `Иркутск`,
+};
+
 
 // Запрашиваемые данные при регистрации аккаунта
 export interface UserSignupData {

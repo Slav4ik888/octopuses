@@ -45,3 +45,11 @@ button {
   color: inherit;
   text-decoration: none;
 }
+
+p {
+  margin: 7px 0;
+}
+
+li {
+  margin-left: 32px;
+}

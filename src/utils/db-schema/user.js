@@ -5,6 +5,7 @@ export default {
   displayName: ``,
   avatarUrl: `no-img-user.svg`,
 
+  location: ``,
   fio: {
     firstName: ``,
     secondName: ``,

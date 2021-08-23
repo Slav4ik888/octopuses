@@ -9,10 +9,8 @@ export enum LogoBtnType {
 
 // Типы для списков
 export enum ListSelectType {
+  LOCATION = `Населённый пункт`,
   USERS = `Пользователи`,
-  COMPANIES = `Компании`,
-  TASK_STATUS = `Статус задания`,
-  PAYERS = `Плательщики`,
 };
 
 

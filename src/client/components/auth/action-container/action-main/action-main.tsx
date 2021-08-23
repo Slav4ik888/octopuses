@@ -22,7 +22,7 @@ type Props = {
   loading: boolean;
   errors: Errors;
   disabled?: boolean;
-  onSubmit: (e: any) => void;
+  onSubmit?: (e: any) => void;
 }
 
 // Кнопка "Зарегистрироваться" | "Войти"
@@ -31,7 +31,7 @@ const ActionMain: React.FC<Props> = ({ type, loading, errors, disabled, onSubmit
   const nameBtn = type === ToggleLoginSignup.LOGIN ? `Войти` : `Зарегистрироваться`;
 
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: 3}}>
       {
         errors.general && (
           <Typography variant="body2" sx={{
@@ -44,8 +44,14 @@ const ActionMain: React.FC<Props> = ({ type, loading, errors, disabled, onSubmit
           </Typography>
         )
       }
-      <Button onClick={onSubmit} variant="contained" color="primary"
-        sx={{ mr: 2 }} disabled={loading || disabled}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        color="primary"
+        sx={{ mt: 3, mb: 2 }}
+        disabled={loading || disabled}
+      >
         {
           nameBtn
         }

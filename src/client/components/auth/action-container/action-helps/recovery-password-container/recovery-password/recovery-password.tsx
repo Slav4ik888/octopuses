@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { sendPasswordResetEmail } from '../../../../../../redux/actions/user-actions';
 import { setErrors } from '../../../../../../redux/actions/ui-actions';
 // MUI Stuff
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -18,14 +17,6 @@ import CircularProgress from '../../../../../buttons/circular-progress/circular-
 import { Errors } from '../../../../../../../types/results';
 
 
-const useStyles = makeStyles((theme) => ({
-  
-
-  progress: {
-    
-  },
-}));
-
 
 type Props = {
   open: boolean;
@@ -38,7 +29,7 @@ type Props = {
 
 const RecoveryPasswod: React.FC<Props> = (props: Props) => {
   const { open, loading, errors, setErrors, sendPasswordResetEmail, onClose } = props;
-  // const classes = useStyles();
+
   const emailRef = React.useRef(null);
 
   const handleSendPasswordResetEmail = () => {
@@ -58,7 +49,6 @@ const RecoveryPasswod: React.FC<Props> = (props: Props) => {
         maxWidth="xs"
         onClose={onClose}
         title="Восстановление пароля"
-        // classname={classes.dialog}
       >
         <div>
           <DialogContent>

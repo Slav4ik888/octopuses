@@ -1,14 +1,14 @@
-import axios from 'axios'
-// import route from '../../utils/routes/routes.js'
+import axios from 'axios';
+import route from '../../utils/routes/routes.js';
 // Redux
-import { userActionType, uiActionType, dataActionType } from '../action-types'
-import { Dispatch } from '../redux-types'
+import { userActionType, uiActionType, dataActionType } from '../action-types';
+import { Dispatch } from '../redux-types';
 // Functions
-// import { getCookie } from '../../../utils/auth/cookies/cookies.js'
-// import { autoLinkClick } from '../../../utils/files/auto-link-click'
-import logger from '../../utils/client-logger/client-logger'
+// import { getCookie } from '../../../utils/auth/cookies/cookies.js';
+// import { autoLinkClick } from '../../../utils/files/auto-link-click';
+import logger from '../../utils/client-logger/client-logger';
 // Types & Consts
-import { UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user'
+import { UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user';
 import { MessageType } from '../../../types/messages';
 
 
@@ -35,141 +35,42 @@ const log = logger(`user-actions`);
 
 
 // Регистрация новой компании START
-// export const userSignup = (type: SignupType, newCompanyData: UserSignupData, answer: RegProtectionCase, history: any[]) => async (dispatch: Dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
+export const userSignup = (userData: UserSignupData, history: any[]) => async (dispatch: Dispatch) => {
+  dispatch({ type: userActionType.LOADING_USER });
 
-//   try {
-//     let res: {
-//       data: {
-//         protectionCase?: RegProtectionCase;
-//         newUser?: {};
-//         newCompany?: {};
-//         message?: {};
-//       },
-//     };
+  try {
+    let res: {
+      data: {
+        newUser?: {};
+        message?: {};
+      },
+    };
+    res = await api.post(`/userSignupStart`, userData);
 
-//     const setNewUser = (timeout: number = 0) => setTimeout(() => {    
-//       dispatch({
-//         type: userActionType.SET_USER,
-//         payload: res.data.newUser,
-//       });
+       
+    dispatch({
+      type: userActionType.SET_USER,
+      payload: res.data.newUser,
+    });
 
-//       dispatch({
-//         type: userActionType.SET_COMPANY,
-//         payload: res.data.newCompany,
-//       });
+    dispatch({
+      type: uiActionType.SET_MESSAGE,
+      payload: {
+        message: res.data.message,
+        type: MessageType.SUCCESS,
+      }
+    });
 
-//       dispatch({
-//         type: uiActionType.SET_MESSAGE,
-//         payload: {
-//           message: res.data.message,
-//           type: MessageType.SUCCESS,
-//         }
-//       });
+    history.push(route.ROOT);
 
-//       if (MODE_AUTH_COOKIE) history.push(route.COURSE);
-//       else history.push(route.ROOT);
-//     }, timeout); // Через timeout секунды, войти в профиль
-
-
-//     if (type === SignupType.START) {
-//       res = await api.post(`/userSignupStart`, newCompanyData);
-//       dispatch({
-//         type: userActionType.SET_PROTECTION_CASE,
-//         payload: res.data.protectionCase
-//       });
-
-//       if (newCompanyData.isMobile) setNewUser();
-//     }
-//     else {
-//       res = await api.post(`/userSignupEnd`, Object.assign(newCompanyData, { answer }));
-//       // setAuthorizationHeader(res.data.token);
-
-//       let protCase = res.data.protectionCase;
-
-//       // Когда вернётся проверенный ответ
-//       if (!protCase.result) {
-//         // Добавляем инфо об ошибке в item sequence
-//         protCase.sequence = protCase.sequence.map((item: RegProtectSequenceItem) => {
-//           const result = protCase.errors?.errIds?.find((err: number) => err === item.id);
-//           if (result || result === 0) item.wrongAnswer = true;
-//           else item.wrongAnswer = false;
-//           return item;
-//         });
-//       }
-
-//       dispatch({ type: userActionType.SET_PROTECTION_CASE, payload: protCase });
-
-//       if (protCase.result) setNewUser(2000);
-//     }
-
-//     dispatch({ type: uiActionType.CLEAR_ERROR });
-//   }
-//   catch (err) {
-//     log(err);
-//     dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//   }
-// }
-
-
-// // // Завершение регистрации - отправка ответов пользователя
-// // export const userSignupEnd = (newCompanyData: UserSignupData, answer: RegProtectionCase, history: any[]) => async (dispatch: Dispatch) => {
-  
-// //   dispatch({ type: userActionType.LOADING_USER });
-
-// //   try {
-// //     const res = await api.post(`/userSignupEnd`, Object.assign(newCompanyData, { answer }));
-// //     // setAuthorizationHeader(res.data.token);
-
-// //     let protCase = res.data.protectionCase;
-
-// //     // Когда вернётся проверенный ответ
-// //     // Добавляем инфо об ошибке в item sequence
-// //     protCase.sequence = protCase.sequence.map((item: RegProtectSequenceItem) => {
-// //       const result = protCase.errors?.errIds?.find((err: number) => err === item.id);
-// //       if (result || result === 0) item.wrongAnswer = true;
-// //       else item.wrongAnswer = false;
-// //       return item;
-// //     });
-
-// //     dispatch({ type: userActionType.SET_PROTECTION_CASE, payload: protCase });
-// //     dispatch({ type: uiActionType.CLEAR_ERROR });
-
-
-// //     if (protCase.result) {
-// //       setTimeout(() => {    
-// //         dispatch({
-// //           type: userActionType.SET_USER,
-// //           payload: res.data.newUser,
-// //         });
-
-// //         dispatch({
-// //           type: userActionType.SET_COMPANY,
-// //           payload: res.data.newCompany,
-// //         });
-
-// //         dispatch({
-// //           type: uiActionType.SET_MESSAGE,
-// //           payload: {
-// //             message: res.data.message,
-// //             type: MessageType.SUCCESS,
-// //           }
-// //         });
-
-// //         if (MODE_AUTH_COOKIE) history.push(route.COURSE);
-// //         else history.push(route.ROOT);
-// //       }, 2000); // Через 2 секунды, войти в профиль
-// //     }
-// //   }
-// //   catch (err) {
-// //     log(err);
-// //     dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-// //     dispatch({ type: uiActionType.CLEAR_ERROR });
-// //     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-// //   }
-// // }
-
+    dispatch({ type: uiActionType.CLEAR_ERROR });
+  }
+  catch (err) {
+    log(err);
+    dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+    dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+  }
+}
 
 
 // // Повторная отправка ссылки для подтверждения почты

@@ -1,4 +1,5 @@
 import Koa from 'koa';
+import dotenv from './utils/dotenv/index.js';
 import middleware from './middleware/index.js';
 
 const app = new Koa();

@@ -29,23 +29,23 @@ export enum ToggleLoginSignup {
 
 
 // Возможные города для регистрации
-export enum Location {
+export enum Locations {
   IRKUTSK = `Иркутск`,
 };
 
 
 // Запрашиваемые данные при регистрации аккаунта
 export interface UserSignupData {
-  location: Location;        // Населённый пункт
+  location: string;        // Населённый пункт
 
-  firstName: string;       // Имя
-  secondName?: string;     // Фамилия
-  middleName?: string;     // Отчество
+  firstName: string | FormDataEntryValue;       // Имя
+  secondName?: string | FormDataEntryValue;     // Фамилия
+  middleName?: string | FormDataEntryValue;     // Отчество
 
-  mobileNumber?: string;   // Номер телефона
-  email: string;
-  password: string;
-  confirmPassword: string;
+  mobileNumber?: string | FormDataEntryValue;   // Номер телефона
+  email: string | FormDataEntryValue;
+  password: string | FormDataEntryValue;
+  confirmPassword: string | FormDataEntryValue;
 
   permissions: boolean;    // Разрешения на обработку персональных данных
   // isMobile: boolean;       // С какого устройства вошёл

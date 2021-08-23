@@ -1,7 +1,7 @@
 import { admin, db } from '../firebase/admin.js';
 import { auth } from '../firebase/fire.js';
 // Validations
-import { validationLoginData, validationSignupData, validationEmailData } from '../../../utils/validators/validators.js';
+import { validationLoginData, validationSignupData, validationEmailData } from '../../utils/validators/base/validators.js';
 // Functions
 import sendMail from '../lib/emails/sendMail.js';
 import { loggerUser, loggerMail } from '../lib/loggers/index.js';
@@ -24,6 +24,7 @@ export async function userSignup(ctx, next) {
       secondName:      ctx.request.body.secondName || "",
       middleName:      ctx.request.body.middleName || "",
       mobileNumber:    ctx.request.body.mobileNumber || "",
+      location:        ctx.request.body.location,
       email:           ctx.request.body.email || "",
       password:        ctx.request.body.password,
       confirmPassword: ctx.request.body.confirmPassword,
@@ -31,6 +32,9 @@ export async function userSignup(ctx, next) {
       createdAt:       new Date().toISOString(),
       lastChange:      new Date().toISOString(),
     };
+
+    // TODO: signupData Validate
+
 
     // Проверяем свободен ли email
     let docs = [];
@@ -61,7 +65,7 @@ export async function userSignup(ctx, next) {
     const options = { maxAge: expiresIn, httpOnly: true, path: '/' };
     ctx.cookies.set('session', sessionCookie, options);
 
-    ctx.body = { status: 'ok' };
+    ctx.body = { newUser, message: `Поздравляем с успешной регистрацией!` };
     loggerUser.info(`[userSignup] - ${email} successfully!`);
   }
   catch (err) {

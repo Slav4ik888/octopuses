@@ -1,7 +1,16 @@
 import { admin, db } from '../firebase/admin.js';
 import { auth } from '../firebase/fire.js';
+// Validations
+import { validationLoginData, validationSignupData, validationEmailData } from '../../../utils/validators/validators.js';
 // Functions
-import { loggerUser } from '../loggers/index.js';
+import sendMail from '../lib/emails/sendMail.js';
+import { loggerUser, loggerMail } from '../lib/loggers/index.js';
+// Helpers
+import { objectFieldsToString } from '../../utils/objects/object-fields-to-string/object-fields-to-string.js';
+// Consts
+import { SITE_URL, SITE_URL_LOGIN, SITE_TITLE } from '../../consts.js';
+
+console.log('process.env.SITE_URL_LOGIN: ', process.env.SITE_URL_LOGIN);
 
 
 export async function userSignup(ctx, next) {
@@ -11,9 +20,9 @@ export async function userSignup(ctx, next) {
 
     const newUser = {
       email,
-      name:            ctx.request.body.name || "",
+      firstName:       ctx.request.body.firstName || "",
       secondName:      ctx.request.body.secondName || "",
-      lastName:        ctx.request.body.lastName || "",
+      middleName:      ctx.request.body.middleName || "",
       mobileNumber:    ctx.request.body.mobileNumber || "",
       email:           ctx.request.body.email || "",
       password:        ctx.request.body.password,
@@ -62,6 +71,63 @@ export async function userSignup(ctx, next) {
   }
 }
 
+
+
+export async function sendPasswordResetEmail(ctx, next) {
+  const email = ctx.request.body.email;
+
+  try {
+    loggerMail.info(`[sendPasswordResetEmail] - start sent to ${email}`);
+    
+    const { valid, errors } = validationEmailData(email);
+    if (!valid) {
+      loggerMail.error(`[sendPasswordResetEmail] - ${email}: ${objectFieldsToString(errors)}`);
+      ctx.status = 400;
+      ctx.body = errors;
+      return;
+    }
+    
+    // Проверяем есть ли такой пользователь в базе, если нет, то выпадет ошибка
+    await admin.auth().getUserByEmail(email);
+
+    const actionCodeSettings = {
+      url: process.env.SITE_URL_LOGIN || SITE_URL_LOGIN,
+      handleCodeInApp: true,
+    };
+
+    const link = await admin.auth().generatePasswordResetLink(email, actionCodeSettings)
+     
+    if (link) await sendMail({
+      to: email,
+      subject: `Ссылка для восстановления доступа на платформу - "${SITE_TITLE.full}"`,
+      locals: {
+        name: ``,
+        url_course: process.env.SITE_URL || SITE_URL,
+        url_link: link
+      },
+      template: 'password-reset-link',
+    });
+    
+    loggerMail.info(`[sendPasswordResetEmail] - ${email} successfully!`);
+    ctx.status = 200;
+    ctx.body = { message: `Ссылка для восстановления пароля отправлена на почту: ${email}` };
+  }
+  catch (err) {
+    switch (err.code) {
+      case `auth/user-not-found`:
+        loggerMail.error(`[sendPasswordResetEmail] - ${email}: не зарегистирован`);
+        ctx.status = 403;
+        ctx.body = { general: `${email} не зарегистирован` };
+        break;
+      
+      default:
+        loggerMail.error(`[sendPasswordResetEmail] - ${email}: ${err}`);
+        ctx.status = 500;
+        ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
+    }
+  }
+}
+  
 
 // TESTING
 

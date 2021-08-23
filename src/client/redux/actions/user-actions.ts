@@ -9,6 +9,7 @@ import { Dispatch } from '../redux-types'
 import logger from '../../utils/client-logger/client-logger'
 // Types & Consts
 import { UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user'
+import { MessageType } from '../../../types/messages';
 
 
 const api = axios.create({
@@ -17,7 +18,9 @@ const api = axios.create({
   withCredentials: true,
 });
 
+
 const log = logger(`user-actions`);
+
 
 // const onSuccess = (response) => response;
 // const onFail = (err) => {
@@ -195,31 +198,31 @@ const log = logger(`user-actions`);
 // }
 
 
-// // Отправить ссылку для восстановления пароля
-// export const sendPasswordResetEmail = (email: string) => async (dispatch: Dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
+// Отправить ссылку для восстановления пароля
+export const sendPasswordResetEmail = (email: string) => async (dispatch: Dispatch) => {
+  dispatch({ type: userActionType.LOADING_USER });
 
-//   try {
-//     const res = await api.post(`/sendPasswordResetEmail`, { email });
+  try {
+    const res = await api.post(`/sendPasswordResetEmail`, { email });
 
-//     dispatch({
-//       type: uiActionType.SET_MESSAGE,
-//       payload: {
-//         message: res.data.message,
-//         type: MessageType.SUCCESS,
-//         timeout: 6000,
-//       }
-//     });
+    dispatch({
+      type: uiActionType.SET_MESSAGE,
+      payload: {
+        message: res.data.message,
+        type: MessageType.SUCCESS,
+        timeout: 6000,
+      }
+    });
     
-//     dispatch({ type: uiActionType.CLEAR_ERROR });
-//     dispatch({ type: userActionType.LOADING_USER_OFF });
+    dispatch({ type: uiActionType.CLEAR_ERROR });
+    dispatch({ type: userActionType.LOADING_USER_OFF });
 
-//   } catch (err) {
-//     log(err);
-//     dispatch({ type: userActionType.LOADING_USER_OFF });
-//     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//   }
-// }
+  } catch (err) {
+    log(err);
+    dispatch({ type: userActionType.LOADING_USER_OFF });
+    dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+  }
+}
 
 
 // // Приглашаем и регистрируем пользователя для компании

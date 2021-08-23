@@ -4,6 +4,7 @@ import Circular from '@material-ui/core/CircularProgress';
 // Functions
 import { extend } from '../../../../utils/objects/objects/objects';
 
+
 type Props = {
   loading: boolean;
   size?: number;

@@ -7,20 +7,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 
 // Components
 import LogoBtn from '../buttons/logo-btn/logo-btn';
-// import NavbarMenuBtns from './navbar-menu-btns/navbar-menu-btns';
+import NavbarMenuBtns from './navbar-menu-btns/navbar-menu-btns';
 // import NavbarSuper from './navbar/navbar-super/navbar-super';
 // import NavbarUser from './navbar/navbar-user/navbar-user';
 // Types
 import { LogoBtnType } from '../../../types/btn';
 
 
-// const useStyles = makeStyles(() => ({
-//   grow: {
-//     flexGrow: 1,
-//     zIndex: 1100,
-//     position: `relative`,
-//   },
-// }));
 
 
 // Верхняя навигационная панель
@@ -40,7 +33,7 @@ const Navbar: React.FC = () => {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* <NavbarMenuBtns /> */}
+          <NavbarMenuBtns />
           
         </Toolbar>
       </AppBar>

@@ -2,11 +2,6 @@
 export enum UserStatusType {
   NEW =  `Зарегистрировался`,
   CONFIRMED = `Подтвердил регистрацию`,
-  INVOICE = `Выписал счёт`,
-  PARTICIPAINT = `Проходит курс`,
-  LOSTED = `Потерялся и не завершил курс`,
-  COMPLECTIED = `Успешно завершил курс`,
-  POSTED_REVIEW = `Оставил отзыв`,
 };
 
 
@@ -26,6 +21,13 @@ export enum Role {
 // ========================================= //
 
 
+// Для Login & Signup
+export enum ToggleLoginSignup {
+  LOGIN = `Войти`,
+  SIGNUP = `Зарегистрироваться`,
+};
+
+
 // Возможные города для регистрации
 export enum Location {
   IRKUTSK = `Иркутск`,
@@ -34,13 +36,17 @@ export enum Location {
 
 // Запрашиваемые данные при регистрации аккаунта
 export interface UserSignupData {
-  name: string;            // Имя
+  location: Location;        // Населённый пункт
+
+  firstName: string;       // Имя
   secondName?: string;     // Фамилия
-  lastName?: string;       // Отчество
-  mobileNumber?: number;    // Номер телефона
+  middleName?: string;     // Отчество
+
+  mobileNumber?: string;   // Номер телефона
   email: string;
   password: string;
   confirmPassword: string;
+
   permissions: boolean;    // Разрешения на обработку персональных данных
   // isMobile: boolean;       // С какого устройства вошёл
 };
@@ -95,49 +101,27 @@ export type NewUserStatusType = {
 };
 
 
-// Должность
-export interface Executive {
-  firstName: string;     // Имя
-  secondName: string;    // Фамилия
-  middleName: string;    // Отчество
-  position: string;      // Должность
+export interface Fio {
+  firstName: string;            // Имя
+  secondName?: string;     // Фамилия
+  middleName?: string;       // Отчество
 };
 
-    
-// Папка в разработке на курсе
-export interface CourseFolder {
-  folderName?: string;
-  folderUrl?: string;
-  checkListUrl?: string;
-};
-
-
-// Данные участника по прохождению курса
-export interface CourseExecution {
-  courseFolders: Array<CourseFolder>; // Ссылки на папки в разработке
-};
-  
 
 // Профиль пользователя
 export interface UserProfile {
-  email: string;          // korzan.va@mail.ru
   userId: string;
   displayName: string;    // Имя которое будет выводиться в бэйджиках
   avatarUrl: string;
   
-  executive: Executive;   // ФИО и должность
-  
+  fio: Fio;
+  email: string;          // korzan.va@mail.ru
+  mobileNumber?: string;  // Номер телефона
+  permissions: boolean;   // Разрешения на обработку персональных данных
+
   role: Role;
   emailVerified: boolean;
   status: UserStatusType;
-
-  companyName: string;
-  companyId: string;
-
-  courseExecution: CourseExecution;
-  
-  endCourse: string;      // Дата завершения курса
-  isSertificate: boolean; // Разрешена ли выдача сертификата
 
   createdAt: string;
   lastChange: string;
@@ -147,9 +131,3 @@ export interface UserProfile {
 // ========================================= //
 //                FOR ADMIN                  //
 // ========================================= //
-
-
-export interface AdminUsersByStatus {
-  status: UserStatusType;
-  users: Array<UserProfile>; // Массив пользователей в этом статусе
-}

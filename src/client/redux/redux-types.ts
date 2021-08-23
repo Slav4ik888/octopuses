@@ -1,7 +1,7 @@
 import { uiActionType, userActionType, dataActionType } from './action-types';
 import { Message } from '../../types/messages';
 import { Errors } from '../../types/results';
-import { UserProfile, UserStatusType, AdminUsersByStatus } from '../../types/user';
+import { UserProfile, UserStatusType } from '../../types/user';
 
 
 type TypeDispatch = uiActionType | userActionType | dataActionType;

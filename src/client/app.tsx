@@ -7,7 +7,7 @@ import PrivateRoute from './utils/routes/private-route';
 import AdminRoute from './utils/routes/admin-route';
 import route from './utils/routes/routes';
 // Pages
-// import Login from './pages/login/login';
+import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 // import Policy from './pages/policy/policy';
 
@@ -49,7 +49,7 @@ const App = () => {
         
           <Switch>
             <AuthRoute exact path={route.SIGNUP} component={Signup} />
-            {/* <AuthRoute exact path={route.LOGIN} component={Login} /> */}
+            <AuthRoute exact path={route.LOGIN} component={Login} />
 
             {/* <PrivateRoute exact path={route.COURSE} component={CourseContainer} /> */}
 

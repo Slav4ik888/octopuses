@@ -22,13 +22,13 @@ import { ToggleLoginSignup } from '../../../types/user';
 
 
 
+
 type Props = {
   errors: Errors;
   setErrors: (errors: Errors) => void;
 };
 
-
-const SignUp: React.FC<Props> = ({errors, setErrors }) => {
+const Login: React.FC<Props> = ({errors, setErrors }) => {
 
   // Согласие пользователя на обр перс данных
   const [permissions, setPermissions] = React.useState(false);
@@ -73,69 +73,34 @@ const SignUp: React.FC<Props> = ({errors, setErrors }) => {
         </Avatar>
 
         <Typography component="h1" variant="h5">
-          Регистрация
+          Войти
         </Typography>
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={2}>
+            
             <Grid item xs={12}>
-              <TextField
-                label="Выберите город" name="locality" required fullWidth
-                type="text" autoComplete="locality" autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Фамилия" name="secondName" fullWidth autoComplete="sName"
-                helperText={errors?.secondName} error={errors?.secondName ? true : false}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Имя" name="name" required fullWidth autoComplete="fname"
-                helperText={errors?.name} error={errors?.name ? true : false}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Отчество" name="lastName" fullWidth autoComplete="lname"
-                helperText={errors?.lastName} error={errors?.lastName ? true : false}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
               <TextField
                 label="Email" name="email" type="email" required fullWidth autoComplete="email"
                 helperText={errors?.email} error={errors?.email ? true : false}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                label="Номер телефона" name="mobileNumber" required fullWidth autoComplete="phone"
-                helperText={errors?.mobileNumber} error={errors?.mobileNumber ? true : false}
-              />
-            </Grid>
-            <Grid item xs={12}  sm={6}>
+            <Grid item xs={12}>
               <TextField
                 label="Пароль" name="password" type="password" required fullWidth autoComplete="current-password"
                 helperText={errors?.password} error={errors?.password ? true : false}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            {/* <Grid item xs={12} sm={6}>
               <TextField
-                label="Подтвердите пароль" name="confirmPassword" type="password" required fullWidth
-                helperText={errors?.confirmPassword} error={errors?.confirmPassword ? true : false}
+                label="Номер телефона" name="mobileNumber" required fullWidth autoComplete="phone"
+                helperText={errors?.mobileNumber} error={errors?.mobileNumber ? true : false}
               />
-            </Grid>
-            
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            </Grid> */}
           </Grid>
+          
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-            Зарегистрироваться
+            Войти
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
@@ -150,10 +115,9 @@ const SignUp: React.FC<Props> = ({errors, setErrors }) => {
           {/* <ActionHelps type={ToggleLoginSignup.SIGNUP } /> */}
         </Box>
       </Box>
-
       <Copyright sx={{ mt: 5 }} />
     </Container>
   );
 };
 
-export default SignUp;
+export default Login;

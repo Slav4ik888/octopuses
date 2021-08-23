@@ -6,8 +6,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { getPathPolicy } from '../utils/paths/index.js';
 
-import { loggerUI } from '../loggers/index.js';
-
+import { loggerUI } from '../lib/loggers/index.js';
 
 
 // Отправка "Политики конфиденциальности"

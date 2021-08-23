@@ -14,6 +14,7 @@ router.get(`/getPolicy`, ui.getPolicy);
 
 // USERS
 router.post(`/userSignup`, u.userSignup);
+router.post(`/sendPasswordResetEmail`, u.sendPasswordResetEmail)
 
 // Testing
 router.get(`/hello`, u.hello);

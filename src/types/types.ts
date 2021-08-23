@@ -1,3 +1,7 @@
+export enum siteTitle {
+  full = `Товары для здоровья «Осьминожки»`,
+  small = `«Осьминожки»`,
+};
 
 
 export enum MimeType {

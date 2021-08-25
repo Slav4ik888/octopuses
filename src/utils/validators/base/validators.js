@@ -163,11 +163,11 @@ export const validationLoginData = (data) => {
   let errors = {};
 
   // Проверка email
-  if (isEmpty(data.email)) errors.email = `Поле email не должно быть пустым`;
+  if (isEmpty(data.email)) errors.email = `Поле "email" не должно быть пустым`;
   if (!isEmail(data.email)) errors.email = `Введён не корректный email`;
 
   // Проверка пароля
-  if (isEmpty(data.password)) errors.password = `Поле пароль" не должно быть пустым`;
+  if (isEmpty(data.password)) errors.password = `Поле "пароль" не должно быть пустым`;
   if (!data.password || data.password.length < 6) errors.password = `Пароль должен содержать более 6 символов`;
 
   return {

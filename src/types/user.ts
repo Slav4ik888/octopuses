@@ -54,8 +54,9 @@ export interface UserSignupData {
 
 // Запрашиваемые данные при входе в аккаунт
 export interface UserLoginData {
-  mobileNumber: number;
-  password: string;
+  email: string | FormDataEntryValue;
+  mobileNumber?: string | FormDataEntryValue;
+  password: string | FormDataEntryValue;
 };
 
 

@@ -4,7 +4,7 @@ import route from '../../utils/routes/routes.js';
 import { userActionType, uiActionType, dataActionType } from '../action-types';
 import { Dispatch } from '../redux-types';
 // Functions
-// import { getCookie } from '../../../utils/auth/cookies/cookies.js';
+import { getCookie } from '../../../utils/auth/cookies/cookies';
 // import { autoLinkClick } from '../../../utils/files/auto-link-click';
 import logger from '../../utils/client-logger/client-logger';
 // Types & Consts
@@ -46,6 +46,7 @@ export const userSignup = (userData: UserSignupData, history: any[]) => async (d
         message?: {};
       },
     };
+
     res = await api.post(`/userSignup`, userData);
        
     dispatch({
@@ -126,72 +127,31 @@ export const sendPasswordResetEmail = (email: string) => async (dispatch: Dispat
 }
 
 
-// // Приглашаем и регистрируем пользователя для компании
-// export const userAdd = (user) => (dispatch: Dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
-
-//   const newUser = {
-//     email: user.email,
-//     firstName: user.firstName,
-//     secondName: user.secondName,
-//     middleName: user.middleName,
-//     password: `qazwsx12`,
-//     confirmPassword: `qazwsx12`,
-//   };
-
-//   return api.post(`/userAdd`, newUser)
-//     .then((res) => {
-//       const { newUser, message } = res.data;
-//       // dispatch({
-//       //   type: dataActionType.CREATE_EMPLOYEE,
-//       //   payload: newUser,
-//       // });
-//       dispatch({
-//         type: uiActionType.SET_MESSAGE,
-//         payload: {
-//           message,
-//           type: MessageType.SUCCESS,
-//         }
-//       });
-
-//       dispatch({ type: uiActionType.CLEAR_ERROR });
-//     })
-//     .catch((err) => {
-//       log(err);
-//       dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//       dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//     });
-// }
-
-
-// // Вход пользователя, загрузка стартовых данных
-// export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
+// Вход пользователя, загрузка стартовых данных
+export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch) => {
+  console.log('userData: ', userData);
+  dispatch({ type: userActionType.LOADING_USER });
   
-//   const csrfToken = getCookie('session');
-//   log('csrfToken: ' + csrfToken);
+  const csrfToken = getCookie('session');
+  log('csrfToken: ' + csrfToken);
   
-//   return api.post(`/userLogin`, { userData, csrfToken })
-//     .then((res) => {
-//       if (MODE_AUTH_TOKEN) setAuthorizationHeader(res.data.token);
-//       log('COOKIE: ' + res.data );
+  return api.post(`/userLogin`, { userData, csrfToken })
+    .then((res) => {
+      log('COOKIE: ' + res.data );
 
-//       // Загружаем данные по user & company & ( tasks || for role.SUPER )
-//       dispatch(getUserAndCompanyData()); 
-//       dispatch({ type: uiActionType.CLEAR_ERROR });
+      // Загружаем данные по user & company & ( tasks || for role.SUPER )
+      // dispatch(getUserAndCompanyData()); 
+      dispatch({ type: uiActionType.CLEAR_ERROR });
 
-//       if (MODE_AUTH_COOKIE) {
-//         dispatch({ type: userActionType.LOADING_USER_OFF });
-//         history.push(route.COURSE);
-//       }
-//       else history.push(route.ROOT);
-//     })
-//     .catch((err) => {
-//       log(err);
-//       dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//       dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//     });
-// }
+      dispatch({ type: userActionType.LOADING_USER_OFF });
+      history.push(route.ROOT);
+    })
+    .catch((err) => {
+      log(err);
+      dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+      dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+    });
+}
 
 
 // // Установка авторизационных заголовков

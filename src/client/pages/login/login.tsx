@@ -1,9 +1,15 @@
 import * as React from 'react';
-// MUI Stuff
+// Redux Stuff
+import { connect } from 'react-redux';
+import { userLogin } from '../../redux/actions/user-actions';
+import { setErrors } from '../../redux/actions/ui-actions';
+import { getErrors } from '../../redux/selectors/ui-selectors';
+import { State } from '../../redux/redux-types';
+// MUI Stuff 
 import Avatar from '@material-ui/core/Avatar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,30 +19,37 @@ import Container from '@material-ui/core/Container';
 import ActionMain from '../../components/auth/action-container/action-main/action-main';
 import ActionHelps from '../../components/auth/action-container/action-helps/action-helps';
 import Copyright from '../../components/auth/copyright/copyrignt';
+// Functions
+import { validationLoginData } from '../../../utils/validators/base/validators';
 // Types & Consts
 import { Errors } from '../../../types/results';
-import { ToggleLoginSignup } from '../../../types/user';
+import { ToggleLoginSignup, UserLoginData } from '../../../types/user';
 
 
 
 
 type Props = {
   errors: Errors;
+  history: any[];
   setErrors: (errors: Errors) => void;
+  userLogin: (loginData: UserLoginData, history?: any[]) => void;
 };
 
-const Login: React.FC<Props> = ({errors, setErrors }) => {
-
+const Login: React.FC<Props> = ({errors, history, setErrors, userLogin }) => {
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const loginData = {
       email: data.get(`email`),
       // mobileNumber: data.get(`mobileNumber`),
       password: data.get(`password`),
-    });
+    };
+
+    const { valid, errors } = validationLoginData(loginData);
+    if (!valid) setErrors(errors);
+    else userLogin(loginData, history);
   };
 
 
@@ -92,4 +105,13 @@ const Login: React.FC<Props> = ({errors, setErrors }) => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state: State) => ({
+  errors: getErrors(state),
+});
+
+const mapActionsToProps = {
+  userLogin, setErrors
+};
+
+
+export default connect(mapStateToProps, mapActionsToProps)(Login);

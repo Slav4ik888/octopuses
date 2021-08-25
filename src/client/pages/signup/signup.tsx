@@ -89,11 +89,9 @@ const SignUp: React.FC<Props> = ({errors, history, setErrors, userSignup }) => {
     userSignupData.location = location?.LOCATION || ``;
     console.log('userSignupData: ', userSignupData);
     
-    userSignup(userSignupData, history);
-
-    // const { valid, errors } = validationSignupData(userSignupData);
-    // if (!valid) setErrors(errors);
-    // else userSignup(userSignupData, history);
+    const { valid, errors } = validationSignupData(userSignupData);
+    if (!valid) setErrors(errors);
+    else userSignup(userSignupData, history);
   };
 
 

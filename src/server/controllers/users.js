@@ -136,6 +136,85 @@ export async function sendPasswordResetEmail(ctx, next) {
 }
   
 
+export async function userLogin(ctx, next) {
+  const user = {
+    email: ctx.request?.body?.userData?.email,
+    password: ctx.request?.body?.userData?.password
+  };
+
+  console.log('user: ', user);
+  loggerUser.info(`[userLogin] - ${user.email}...`);
+  
+  try {
+    const { valid, errors } = validationLoginData(user);
+    if (!valid) {
+      loggerUser.error(`[userLogin] - ${objectFieldsToString(errors)}`);
+      ctx.status = 400; ctx.body = errors; return;
+    }
+    
+    // Проверяем является ли пользователь удалённым (отключенным)
+    const userRecord = await admin.auth().getUserByEmail(user.email);
+    if (userRecord.disabled) {
+      loggerUser.error(`[userLogin] - Данный аккаунт отключен. Обратитесь в службу технической поддержки.`);
+      ctx.status = 403;
+      ctx.body = { general: `Данный аккаунт отключен. Обратитесь в службу технической поддержки.` };
+      return;
+    }
+
+    const userData = await auth.signInWithEmailAndPassword(user.email, user.password);
+    const idToken = await userData.user.getIdToken();
+
+
+    const csrfToken = ctx.request.body.csrfToken ? ctx.request.body.csrfToken.toString() : ``;
+
+    // Guard against CSRF attacks.
+    if (ctx.request?.cookies && csrfToken) {
+      if (csrfToken !== ctx.request.cookies.csrfToken) {
+        loggerUser.error(`[userLogin] - [${user.email}] - Guard against CSRF attacks`);
+        ctx.status = 401; ctx.body = { general: 'UNAUTHORIZED REQUEST!' };return;
+      }
+    }
+
+    // Set session expiration to 12 days.
+    const expiresIn = 60 * 60 * 24 * 12 * 1000;
+
+    // Create the session cookie. This will also verify the ID token in the process.
+    // The session cookie will have the same claims as the ID token.
+    // To only allow session cookie setting on recent sign-in, auth_time in ID token
+    // can be checked to ensure user was recently signed in before creating a session cookie.
+    const sessionCookie = await admin.auth().createSessionCookie(idToken, { expiresIn });
+
+    // Set cookie policy for session cookie.
+    // ADD secure: true, когда будет https
+    const options = { maxAge: expiresIn, httpOnly: true, path: '/' };
+    ctx.cookies.set('session', sessionCookie, options);
+    ctx.body = { status: 'success' };
+
+    loggerUser.info(`[userLogin] - ${user.email} вошёл :)`);
+    return;
+  }
+  catch (err) {
+      switch (err.code) {
+        case `auth/user-not-found`:
+          loggerUser.error(`[userLogin] - [${user.email}] - Пользователь с таким email не найден...`);
+          ctx.status = 403;
+          ctx.body = { email: `Пользователь с таким email не найден` };
+          return;
+        
+        case `auth/wrong-password`:
+          loggerUser.error(`[userLogin] - [${user.email}] - Не верный пароль...`);
+          rctx.status = 403;
+          ctx.body = { password: `Не верный пароль, попробуйте ещё раз` };
+          return;
+          
+        default:
+          loggerUser.error(`[userLogin] - [${user.email}] - ${err}`);
+          ctx.status = 500;
+          ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
+      }
+  }
+}
+
 // TESTING
 
 export async function hello(ctx, next) {

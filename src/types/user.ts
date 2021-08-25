@@ -29,8 +29,8 @@ export enum ToggleLoginSignup {
 
 
 // Возможные города для регистрации
-export enum Locations {
-  IRKUTSK = `Иркутск`,
+export interface Location {
+  LOCATION: string,
 };
 
 

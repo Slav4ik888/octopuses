@@ -37,9 +37,8 @@ const RecoveryPasswod: React.FC<Props> = (props: Props) => {
     if (email) {
       onClose();
       sendPasswordResetEmail(email);
-    } else {
-      setErrors({ email: `Поле email не должно быть пустым` });
     }
+    else setErrors({ email: `Поле email не должно быть пустым` });
   };
   
   return (

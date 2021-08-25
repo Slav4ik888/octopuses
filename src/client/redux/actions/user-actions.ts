@@ -36,6 +36,7 @@ const log = logger(`user-actions`);
 
 // Регистрация новой компании START
 export const userSignup = (userData: UserSignupData, history: any[]) => async (dispatch: Dispatch) => {
+  
   dispatch({ type: userActionType.LOADING_USER });
 
   try {
@@ -45,8 +46,7 @@ export const userSignup = (userData: UserSignupData, history: any[]) => async (d
         message?: {};
       },
     };
-    res = await api.post(`/userSignupStart`, userData);
-
+    res = await api.post(`/userSignup`, userData);
        
     dispatch({
       type: userActionType.SET_USER,

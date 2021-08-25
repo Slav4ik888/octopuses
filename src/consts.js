@@ -4,8 +4,14 @@ export const SITE_TITLE = {
   small: `«Осьминожки»`,
 };
 
-export const ASSEMBLY_TIME = `2021-08-23 23:00`;
+export const ASSEMBLY_TIME = `2021-08-24 23:00`;
 export const ENV = `development`;
 
 export const SITE_URL = `http://course.thm.su`;
 export const SITE_URL_LOGIN = `http://course.thm.su/login`;
+
+
+// Возможные города для регистрации
+export const LOCATION = {
+  IRKUTSK: `Иркутск`,
+};

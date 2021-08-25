@@ -34,9 +34,11 @@ const ActionMain: React.FC<Props> = ({ type, loading, errors, disabled, onSubmit
     <Box sx={{ mt: 3}}>
       {
         errors.general && (
-          <Typography variant="body2" sx={{
+          <Typography
+            variant="body2"
+            sx={{
               color: `red`,
-              fontSize: `0.8rem`,
+              // fontSize: `0.8rem`,
               mt: 1.5,
             }}
           >

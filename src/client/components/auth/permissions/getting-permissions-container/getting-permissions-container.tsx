@@ -41,7 +41,7 @@ const GettingPermissionsContainer: React.FC<Props> = ({ errors, onPermission }) 
         display: `flex`,
         flexDirection: `column`,
         alignItems: `flex-start`,
-        margin: [4, 0, 2, 0],
+        m: { xs: `8px 0`, sm: `24px 0 16px` },
         textAlign: `left`,
         fontSize: `0.8rem`,
         lineHeight: 1.4,
@@ -52,12 +52,12 @@ const GettingPermissionsContainer: React.FC<Props> = ({ errors, onPermission }) 
         sx={{
           display: `flex`,
           alignItems: `center`,
-          margin: [0.5, 0]
+          m: `4px 0`,
         }}
       >
         <Checkbox
           sx={{
-            paddingRight: 1.2,
+            pr: 1.2,
             color: `secondary.main`
           }}
           onChange={handleChange}

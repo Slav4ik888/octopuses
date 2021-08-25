@@ -11,7 +11,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 // Component
 import { ListSelectType } from '../../../../types/btn';
 // Types
-import { NewUserStatusType, Locations } from '../../../../types/user';
+import { NewUserStatusType, Location } from '../../../../types/user';
 
 
 type Props = {
@@ -25,7 +25,7 @@ type Props = {
   fullWidth?: boolean;
   displayEmpty?: boolean; // Показывать текст не выбранного элемента
   formVariant?: "filled" | "outlined" | "standard"; // variant для формы "outlined"
-  onSelected: (newStatus: Locations | NewUserStatusType | `SELECT`, item?: any) => void;
+  onSelected: (newStatus: Location | NewUserStatusType | `SELECT`, item?: any) => void;
   onItemAdd?: () => void; // Ф-я для добавления нового элемента
 };
 
@@ -55,20 +55,21 @@ const ListSelect: React.FC<Props> = ({ type, items, valueField, label, placehold
 
   return (
     <FormControl
-      variant={formVariant || "standard"}
+      variant={formVariant || "outlined"}
       sx={{
         display: 'flex',
-        minWidth: 220,
+        // minWidth: 220,
         pb: `10px`,
       }}
       disabled={disabled}
-      fullWidth={fullWidth}
+      // fullWidth={fullWidth}
     >
       {
-        label && <InputLabel>{label}</InputLabel>
+        label && <InputLabel id={label}>{label}</InputLabel>
       }
 
       <Select
+        labelId={label}
         fullWidth={fullWidth}
         value={valueSelected}
         onChange={handleChange}

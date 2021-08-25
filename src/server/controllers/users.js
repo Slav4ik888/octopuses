@@ -33,8 +33,11 @@ export async function userSignup(ctx, next) {
       lastChange:      new Date().toISOString(),
     };
 
-    // TODO: signupData Validate
-
+    const { valid, errors } = validationSignupData(newUser);
+    if (!valid) {
+      loggerUser.error(`[userSignup] - ${newUser.email} - ${objectFieldsToString(errors)}`);
+      return res.status(400).json(errors);
+    }
 
     // Проверяем свободен ли email
     let docs = [];

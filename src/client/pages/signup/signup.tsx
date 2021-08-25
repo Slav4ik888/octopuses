@@ -30,11 +30,11 @@ import { arrFromObjByObj } from '../../../utils/objects/objects/objects';
 // Types & Consts
 import { ListSelectType } from '../../../types/btn';
 import { Errors } from '../../../types/results';
-import { ToggleLoginSignup, Locations, UserSignupData } from '../../../types/user';
+import { ToggleLoginSignup, UserSignupData } from '../../../types/user';
+import { LOCATION } from '../../../consts';
 
 
-
-const locations = arrFromObjByObj(Locations, `LOCATION`);
+const locations = arrFromObjByObj(LOCATION, `LOCATION`);
 console.log('locations: ', locations);
 
 
@@ -42,7 +42,7 @@ console.log('locations: ', locations);
 const getUserSignupData = (formdata: FormData) => ({
   firstName: formdata.get(`firstName`),
   secondName: formdata.get(`secondName`),
-  lastName: formdata.get(`lastName`),
+  middleName: formdata.get(`middleName`),
   email: formdata.get(`email`),
   mobileNumber: formdata.get(`mobileNumber`),
   password: formdata.get(`password`),
@@ -86,11 +86,14 @@ const SignUp: React.FC<Props> = ({errors, history, setErrors, userSignup }) => {
     const data = new FormData(event.currentTarget);
     let userSignupData = getUserSignupData(data);
     userSignupData.permissions = permissions;
-    userSignupData.location = location;
+    userSignupData.location = location?.LOCATION || ``;
+    console.log('userSignupData: ', userSignupData);
     
-    const { valid, errors } = validationSignupData(userSignupData);
-    if (!valid) setErrors(errors);
-    else userSignup(userSignupData, history);
+    userSignup(userSignupData, history);
+
+    // const { valid, errors } = validationSignupData(userSignupData);
+    // if (!valid) setErrors(errors);
+    // else userSignup(userSignupData, history);
   };
 
 
@@ -121,10 +124,16 @@ const SignUp: React.FC<Props> = ({errors, history, setErrors, userSignup }) => {
                 items={locations}
                 valueField={`LOCATION`}
                 fullWidth
-                placeholder={locations[0]}
+                placeholder={locations[0].LOCATION}
                 type={ListSelectType.LOCATION}
                 onSelected={handleLocation}
               />
+              <Box sx={{ color: `#d32f2f`, fontSize: `0.8rem` }}>
+                {
+                  errors.location ? errors.location : null
+                }
+              </Box>
+              
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -134,14 +143,14 @@ const SignUp: React.FC<Props> = ({errors, history, setErrors, userSignup }) => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Имя" name="firstname" required fullWidth autoComplete="fname"
-                helperText={errors?.firstname} error={errors?.firstname ? true : false}
+                label="Имя" name="firstName" required fullWidth autoComplete="fname"
+                helperText={errors?.firstName} error={errors?.firstName ? true : false}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Отчество" name="lastName" fullWidth autoComplete="lname"
-                helperText={errors?.lastName} error={errors?.lastName ? true : false}
+                label="Отчество" name="middleName" fullWidth autoComplete="lname"
+                helperText={errors?.middleName} error={errors?.middleName ? true : false}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -168,25 +177,16 @@ const SignUp: React.FC<Props> = ({errors, history, setErrors, userSignup }) => {
                 helperText={errors?.confirmPassword} error={errors?.confirmPassword ? true : false}
               />
             </Grid>
+           
             
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <FormControlLabel
                 control={<Checkbox value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
-            </Grid>
+            </Grid> */}
           </Grid>
 
-          {/* <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-            Зарегистрироваться
-          </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2" color="secondary">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid> */}
 
           <GettingPermission onPermission={handlePermisson} />
           <ActionMain type={ToggleLoginSignup.SIGNUP} onSubmit={handleSubmit} />

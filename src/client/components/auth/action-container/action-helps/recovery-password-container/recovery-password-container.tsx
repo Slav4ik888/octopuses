@@ -19,7 +19,7 @@ const RecoveryPasswordContainer: React.FC = () => {
       <Typography
         onClick={handleOpenРasswordRecovery}
         variant="body2"
-        sx={{ cursor: `pointer` }}
+        sx={{ cursor: `pointer`, textAlign: `center` }}
       >
         Восстановить пароль
       </Typography>

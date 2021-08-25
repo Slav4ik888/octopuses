@@ -5,9 +5,9 @@ import { MessageType } from './messages';
 export interface Errors {
   general?: string;
   permissions?: string;
-  firstname?: string;
+  firstName?: string;
   secondName?: string;
-  lastName?: string;
+  middleName?: string;
   location?: string;
   email?: string;
   mobileNumber?: string;

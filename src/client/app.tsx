@@ -13,7 +13,7 @@ import Signup from './pages/signup/signup';
 
 // Components
 import Navbar from './components/navbar/navbar';
-// import MessageBar from './components/dialogs/message-bar';
+import MessageBar from './components/dialogs/message-bar/message-bar';
 // import Root from './pages/root/root';
 // import Footer from './components/footer/footer';
 // import AcceptCookie from './components/auth/accept-cookie/accept-cookie';
@@ -45,7 +45,7 @@ const App = () => {
         {/* <AcceptCookie /> */}
 
         <main className="page-body">
-          {/* <MessageBar /> */}
+          <MessageBar />
         
           <Switch>
             <AuthRoute exact path={route.SIGNUP} component={Signup} />

@@ -80,17 +80,17 @@ export const isNoITN = (ITN) => !isITN(ITN);
 // Проверяем данные на регистрацию пользователя
 export const validationSignupData = (data) => {
   let errors = {};
-  // Проверка Location
-  // location: Location;        // Населённый пункт
+  // Проверка Location // Населённый пункт
+  if (isEmpty(data.location)) errors.location = `Поле "Населённый пункт" не должно быть пустым`;
 
   // Проверка email
-  if (isEmpty(data.email)) errors.email = `Поле email не должно быть пустым`;
+  if (isEmpty(data.email)) errors.email = `Поле "Email" не должно быть пустым`;
   if (!isEmail(data.email)) errors.email = `Введён не корректный email`;
   if (!isValidMaxL30(data.email)) errors.email = `Email не должен превышать 30 символов`;
 
   
   // Проверка firstName
-  if (isEmpty(data.firstName)) errors.firstName = `Поле Имя не должно быть пустым`;
+  if (isEmpty(data.firstName)) errors.firstName = `Поле "Имя" не должно быть пустым`;
   if (!isValidMaxL30(data.firstName)) errors.firstName = `Имя не должно превышать 30 символов`;
   // Проверка secondName
   if (!isValidMaxL30(data.secondName)) errors.secondName = `Фамилия не должна превышать 30 символов`;
@@ -98,12 +98,13 @@ export const validationSignupData = (data) => {
   if (!isValidMaxL30(data.middleName)) errors.middleName = `Отчество не должна превышать 30 символов`;
 
   // Проверка mobileNumber?: string;   // Номер телефона
-  // TODO:
+  if (isEmpty(data.mobileNumber)) errors.mobileNumber = `Поле "Номер телефона" не должно быть пустым`;
+  // TODO: проверка валидности номера
 
   // Проверка пароля
-  if (isEmpty(data.password)) errors.password = `Поле пароль" не должно быть пустым`;
+  if (isEmpty(data.password)) errors.password = `Поле "Пароль" не должно быть пустым`;
   if (data.password.length < 6) errors.password = `Пароль должен содержать более 6 символов`;
-  if (data.password !== data.confirmPassword) errors.password = `Значение в поле подтверждение пароля, не совпадает с введёным паролем`;
+  if (data.password !== data.confirmPassword) errors.password = `Значение в поле "Подтверждение пароля", не совпадает с введёным паролем`;
 
   if (!data.permissions) errors.permissions = `Для регистрации, заполните необходимые поля и предоставьте согласие на обработку персональных данных`;
 

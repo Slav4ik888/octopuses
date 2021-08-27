@@ -1,4 +1,3 @@
-
 export const SITE_TITLE = {
   full: `Товары для здоровья «Осьминожки»`,
   small: `«Осьминожки»`,
@@ -15,3 +14,5 @@ export const SITE_URL_LOGIN = `http://course.thm.su/login`;
 export const LOCATION = {
   IRKUTSK: `Иркутск`,
 };
+
+export const MODE_AUTH_COOKIE = true;

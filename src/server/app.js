@@ -1,6 +1,13 @@
 import Koa from 'koa';
+// import cookie from 'koa-cookie';
+
 import dotenv from './utils/dotenv/index.js';
 import middleware from './middleware/index.js';
+// Functions
+import { loggerServer } from './libs/loggers/index.js';
+// Helpers
+import { objectFieldsToString } from '../utils/objects/object-fields-to-string/object-fields-to-string.js';
+
 
 const app = new Koa();
 
@@ -9,6 +16,8 @@ app.use(async (ctx, next) => {
     await next();
   }
   catch (err) {
+    loggerServer.error(`loggerServer: ${objectFieldsToString(err)}`);
+
     if (err.status) {
       ctx.status = err.status;
       ctx.body = {error: err.message};
@@ -20,6 +29,9 @@ app.use(async (ctx, next) => {
     }
   }
 });
+
+
+// app.use(cookie());
 
 middleware(app);
 

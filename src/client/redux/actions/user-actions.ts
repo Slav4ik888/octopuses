@@ -4,17 +4,18 @@ import route from '../../utils/routes/routes.js';
 import { userActionType, uiActionType, dataActionType } from '../action-types';
 import { Dispatch } from '../redux-types';
 // Functions
+import { isRoleSuper } from '../../../utils/verifications/is/is.js';
 import { getCookie } from '../../../utils/auth/cookies/cookies';
 // import { autoLinkClick } from '../../../utils/files/auto-link-click';
 import logger from '../../utils/client-logger/client-logger';
 // Types & Consts
-import { UserSignupData, UserLoginData, UserProfile, RegProtectionCase, RegProtectSequenceItem } from '../../../types/user';
+import { UserSignupData, UserLoginData, UserProfile } from '../../../types/user';
 import { MessageType } from '../../../types/messages';
 
 
 const api = axios.create({
   baseURL: `/api`,
-  timeout: 1000 * 10,
+  timeout: 1000 * 20,
   withCredentials: true,
 });
 
@@ -138,12 +139,12 @@ export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch)
   
   return api.post(`/userLogin`, { userData, csrfToken })
     .then((res) => {
-      log('COOKIE: ' + res.data );
+      log('RES: ', res.data.userData );
 
-      // Загружаем данные по user & company & ( tasks || for role.SUPER )
-      // dispatch(getUserAndCompanyData()); 
+      // Загружаем данные по user & ( tasks || for role.SUPER )
+      dispatch(getAllUserData());
+
       dispatch({ type: uiActionType.CLEAR_ERROR });
-
       dispatch({ type: userActionType.LOADING_USER_OFF });
       history.push(route.ROOT);
     })
@@ -199,82 +200,68 @@ export const getUserProfile = ({ userId }) => (dispatch: Dispatch) => {
 }
 
 
-// // Получение данных сразу и о компании и о пользователе
-// export const getUserAndCompanyData = () => async (dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
+// Получение данных сразу и о компании и о пользователе
+export const getAllUserData = () => async (dispatch) => {
+  dispatch({ type: userActionType.LOADING_USER });
 
-//   try {
-//     const res = await api.get(`/getUserAndCompanyData`);
-//     const { userData, companyData } = res.data;
+  try {
+    const res = await api.get(`/getAllUserData`);
+    const { userData } = res.data;
 
-//     dispatch({
-//       type: userActionType.SET_COMPANY,
-//       payload: companyData,
-//     });
-//     dispatch({
-//       type: userActionType.SET_USER,
-//       payload: userData,
-//     });
+    dispatch({
+      type: userActionType.SET_USER,
+      payload: userData,
+    });
 
 
-//     if (isRoleSuper(userData)) {
-//       log(`Вошёл администратор курса, загружаем непрочитанные комментарии`);
+    if (isRoleSuper(userData)) {
+      log(`Вошёл Суперадмин`);
       
-//       const resComments = await api.get(`/getUnreadedComments`);
-//       dispatch({
-//         type: dataActionType.ADD_UNREADED_COMMENTS,
-//         payload: resComments.data.unreadedComments
-//       });
+      // const resComments = await api.get(`/getUnreadedComments`);
+      // dispatch({
+      //   type: dataActionType.ADD_UNREADED_COMMENTS,
+      //   payload: resComments.data.unreadedComments
+      // });
 
-//       // log(`Загружаем профили пользователей и компаний`);
-//       const resProfiles = await api.get(`/adminGetUsersAndCompaniesProfiles`);
-//       const { usersProfiles, companiesProfiles } = resProfiles.data;
+      // log(`Загружаем профили пользователей и компаний`);
+      // const resProfiles = await api.get(`/adminGetUsersAndCompaniesProfiles`);
+      // const { usersProfiles, companiesProfiles } = resProfiles.data;
       
-//       dispatch({
-//         type: dataActionType.ADMIN_ADD_USERS_PROFILES,
-//         payload: usersProfiles,
-//       });
-//       dispatch({
-//         type: dataActionType.ADMIN_ADD_COMPANIES_PROFILES,
-//         payload: companiesProfiles,
-//       });
+      // dispatch({
+      //   type: dataActionType.ADMIN_ADD_USERS_PROFILES,
+      //   payload: usersProfiles,
+      // });
+      // dispatch({
+      //   type: dataActionType.ADMIN_ADD_COMPANIES_PROFILES,
+      //   payload: companiesProfiles,
+      // });
 
-//       // log(`Загружаем задания в статусе ON_CHECK`);
-//       const resTaskOnCheck = await api.get(`/adminGetTasksByStatusOnCheck`);
-//       dispatch({
-//         type: dataActionType.ADMIN_SET_TASK_ON_CHECK,
-//         payload: resTaskOnCheck.data
-//       });
+      // log(`Загружаем задания в статусе ON_CHECK`);
+      // const resTaskOnCheck = await api.get(`/adminGetTasksByStatusOnCheck`);
+      // dispatch({
+      //   type: dataActionType.ADMIN_SET_TASK_ON_CHECK,
+      //   payload: resTaskOnCheck.data
+      // });
+    }
+    else {
+      log(`Вошёл USER`);
 
-//     } else {
-//       log(`Вошёл пользователь`);
+      // const resComments = await  api.get(`/getUnreadedComments`)
+      // dispatch({
+      //   type: dataActionType.ADD_UNREADED_COMMENTS,
+      //   payload: resComments.data.unreadedComments,
+      // });
 
-//       if (
-//         isSubscribe(companyData.subscribes.subscribe) ||
-//         isDemoSubscribe(companyData.subscribes.subscribe)
-//       ) {
-//         log(`Подписка оформлена, загружаем задания и непрочитанные комментарии`);
+      // dispatch(getAllTasksByUserId()); // Загружаем все задания пользователя
+    }
 
-//         const resComments = await  api.get(`/getUnreadedComments`)
-//         dispatch({
-//           type: dataActionType.ADD_UNREADED_COMMENTS,
-//           payload: resComments.data.unreadedComments,
-//         });
-
-//         dispatch(getAllTasksByUserId()); // Загружаем все задания пользователя
-
-//       } else {
-//         log(`Подписка не оформлена`);
-//       }
-//     }
-
-//     dispatch({ type: uiActionType.CLEAR_ERROR });
-
-//   } catch (err) {
-//     log(err);
-//     dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//   }
-// }
+    dispatch({ type: uiActionType.CLEAR_ERROR });
+  }
+  catch (err) {
+    log(err);
+    dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+  }
+}
 
 
 // Обновляем данные о пользователе

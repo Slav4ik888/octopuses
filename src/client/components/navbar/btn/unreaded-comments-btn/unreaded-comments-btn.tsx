@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getUnreadedComments } from '../../../../redux/selectors/data-selectors';
 import { getUserId } from '../../../../redux/selectors/user-selectors';
 // MUI Stuff
-import makeStyles from '@material-ui/core/styles/makeStyles';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Tooltip from '@material-ui/core/Tooltip';       
@@ -20,18 +19,6 @@ import { State } from '../../../../redux/redux-types';
 import { Comment } from '../../../../../types/messages';
 import themes from '../../../../utils/themes/themes';
 
-
-const useStyle = makeStyles(() => ({
-  badge: {
-    '& .MuiBadge-badge': {
-      backgroundColor: themes.badges.badge,
-      height: `17px`,
-      minWidth: `17px`,
-      borderRadius: `50%`,
-      fontSize: `10px`,
-    },
-  },
-}));
 
 
 type Props = {

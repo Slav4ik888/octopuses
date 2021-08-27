@@ -3,8 +3,8 @@ import { auth } from '../firebase/fire.js';
 // Validations
 import { validationLoginData, validationSignupData, validationEmailData } from '../../utils/validators/base/validators.js';
 // Functions
-import sendMail from '../lib/emails/sendMail.js';
-import { loggerUser, loggerMail } from '../lib/loggers/index.js';
+import sendMail from '../libs/emails/sendMail.js';
+import { loggerUser, loggerMail } from '../libs/loggers/index.js';
 // Helpers
 import { objectFieldsToString } from '../../utils/objects/object-fields-to-string/object-fields-to-string.js';
 // Consts
@@ -188,7 +188,7 @@ export async function userLogin(ctx, next) {
     // ADD secure: true, когда будет https
     const options = { maxAge: expiresIn, httpOnly: true, path: '/' };
     ctx.cookies.set('session', sessionCookie, options);
-    ctx.body = { status: 'success' };
+    ctx.body = { status: `success!` };
 
     loggerUser.info(`[userLogin] - ${user.email} вошёл :)`);
     return;
@@ -212,6 +212,42 @@ export async function userLogin(ctx, next) {
           ctx.status = 500;
           ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
       }
+  }
+}
+
+
+export async function getAllUserData(ctx, next) {
+  try {
+    loggerUser.info(`[getAllUserData] - [${ctx.user.email}]...`);
+
+    const data = await db
+      .collection(`users`)
+      .where(`userId`, `==`, ctx.user.uid)
+      .limit(1)
+      .get();
+    
+    ctx.status = 200;
+    ctx.body = { userData: data.docs[0].data() };
+  }
+  catch (err) {
+    switch (err.code) {
+      case `auth/user-not-found`:
+        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - Пользователь с таким email не найден...`);
+        ctx.status = 403;
+        ctx.body = { email: `Пользователь с таким email не найден` };
+        return;
+      
+      case `auth/wrong-password`:
+        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - Не верный пароль...`);
+        rctx.status = 403;
+        ctx.body = { password: `Не верный пароль, попробуйте ещё раз` };
+        return;
+        
+      default:
+        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - ${err}`);
+        ctx.status = 500;
+        ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
+    }
   }
 }
 

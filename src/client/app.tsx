@@ -19,7 +19,7 @@ import MessageBar from './components/dialogs/message-bar/message-bar';
 // import AcceptCookie from './components/auth/accept-cookie/accept-cookie';
 
 // Functions
-// import { checkAuth } from '../utils/auth/check-auth';
+import { checkAuth } from '../utils/auth/check-auth/check-auth';
 // import { checkAcceptCookie } from '../utils/auth/accept-cookie/accept-cookie';
 import { ListSelectType } from '../types/btn';
 import { history } from './utils/routes/history';
@@ -27,7 +27,7 @@ import screenListener from './utils/screens/listener-rezise-screen';
 // DEV
 
 // checkAcceptCookie();  // Check is user accept cookie and set in Store
-// checkAuth();          // Проверяем есть ли актуальный cookie или токен пользователя
+checkAuth();          // Проверяем есть ли актуальный cookie или токен пользователя
 screenListener();     // Слушатель на изменение размеров экрана
 
 

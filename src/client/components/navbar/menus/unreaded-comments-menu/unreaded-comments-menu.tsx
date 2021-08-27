@@ -6,65 +6,30 @@ import { setTargetScroll } from '../../../../redux/actions/ui-actions';
 import { Link } from 'react-router-dom';
 import route from '../../../../utils/routes/routes';
 // MUI Stuff
-import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 // Functions
-import { createListPanelId } from '../../../../utils/create-list-panel-id';
+import { createListPanelId } from '../../utils/create-list-panel-id';
 // Types
-import { Comment } from '../../../../../types/comments';
+import { Comment } from '../../../../../types/messages';
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    
-  },
-  menuItem: {
-    display: `flex`,
-    alignItems: `center`
-  },
-  avatar: {
-    marginRight: theme.spacing(2),
-    '& .MuiAvatar-img': {
-      margin: 0,
-      padding: 0,
-      border: `none`,
-      boxShadow: `none`,
-    },
-  },
-  comment: {
-    whiteSpace: `normal`,
-    overflow: `hidden`,
-    textOverflow: `ellipsis`,
-    width: `300px`,
-    maxHeight: `72px`
-  },
-  userName: {
-    display: 'inline',
-    marginRight: theme.spacing(1),
-    color: `#625f40`
-  },
-  message: {
-    fontStyle: `italic`
-  }
-}));
 
 
 type Props = {
   open: boolean;
-  onClose: () => void;
   anchorEl: Element;
   menuId: string;
   unreadedComments: Array<Comment>;
   setTargetScroll: (containerId: string) => void;
+  onClose: () => void;
 }
 
 
 // Меню с непрочитанными комментариями для Navbar
-const UnreadedCommentsMenu: React.FC<Props> = ({ open, onClose, anchorEl, menuId, unreadedComments, setTargetScroll }) => {
-  const classes = useStyles();
+const UnreadedCommentsMenu: React.FC<Props> = ({ open, anchorEl, menuId, unreadedComments, setTargetScroll, onClose }) => {
 
   const handleCommentClick = (comment: Comment) => {
     const containerId = createListPanelId(comment, `comment`);
@@ -81,20 +46,42 @@ const UnreadedCommentsMenu: React.FC<Props> = ({ open, onClose, anchorEl, menuId
     >
       {
         unreadedComments.map(comment => <MenuItem onClick={() => handleCommentClick(comment)} key={comment.id}>
-          <Link to={`${route.COURSE}/taskId=${comment.taskId}`} >
-            <div className={classes.menuItem}>
-              <div className={classes.avatar}>
+          <Link to={`${route.ROOT}/taskId=${comment.id}`} >
+            <Box sx={{ display: `flex`, alignItems: `center` }}>
+              <Box sx={{
+                mr: 2,
+                '& .MuiAvatar-img': {
+                  m: 0,
+                  p: 0,
+                  border: `none`,
+                  boxShadow: `none`,
+                }
+              }}>
                 <Avatar src={comment.avatarUrl} />
-              </div>
-              <div className={classes.comment}>
-                <Typography component="span" variant="body1" className={classes.userName}>
+              </Box>
+              <Box
+                sx={{
+                  whiteSpace: `normal`,
+                  overflow: `hidden`,
+                  textOverflow: `ellipsis`,
+                  width: `300px`,
+                  maxHeight: `72px`
+                }}
+              >
+                <Typography component="span" variant="body1"
+                  sx={{
+                    display: 'inline',
+                    mr: 1,
+                    color: `#625f40`
+                  }}
+                >
                   {comment.userName}
                 </Typography>
-                <Typography component="span" variant="body2" className={classes.message}>
+                <Typography component="span" variant="body2" sx={{ fontStyle: `italic` }}>
                   - "{comment.message}"
                 </Typography>
-              </div>
-            </div>
+              </Box>
+            </Box>
           </Link>
         </MenuItem>
         )

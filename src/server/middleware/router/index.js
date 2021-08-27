@@ -1,9 +1,8 @@
 import Router from 'koa-router';
 import * as ui from '../../controllers/ui.js';
 import * as u from '../../controllers/users.js';
-
-// import cookie from 'koa-cookie';
-// router.use(cookie());
+import { mustBeAuthenticated } from '../../libs/verifications/must-be-authenticated.js';
+import FBAuth from '../../firebase/fb-auth.js';
 
 
 const router = new Router({ prefix: '/api' });
@@ -16,6 +15,7 @@ router.get(`/getPolicy`, ui.getPolicy);
 router.post(`/userSignup`, u.userSignup);
 router.post(`/sendPasswordResetEmail`, u.sendPasswordResetEmail);
 router.post(`/userLogin`, u.userLogin);
+router.get(`/getAllUserData`, FBAuth, u.getAllUserData);
 
 // Testing
 router.get(`/hello`, u.hello);

@@ -3,7 +3,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import route from '../../../../utils/routes/routes';
 // MUI Stuff
-// import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 // Icons
 import AccountCircle from '@material-ui/icons/AccountCircle';

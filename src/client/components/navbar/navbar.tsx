@@ -8,8 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 // Components
 import LogoBtn from '../buttons/logo-btn/logo-btn';
 import NavbarMenuBtns from './navbar-menu-btns/navbar-menu-btns';
-// import NavbarSuper from './navbar/navbar-super/navbar-super';
-// import NavbarUser from './navbar/navbar-user/navbar-user';
+import NavbarUser from './navbar-user/navbar-user';
 // Types
 import { LogoBtnType } from '../../../types/btn';
 
@@ -28,8 +27,7 @@ const Navbar: React.FC = () => {
 
           <Box sx={{ flexGrow: 1 }} />
 
-          {/* <NavbarUser />
-          <NavbarSuper /> */}
+          <NavbarUser />
 
           <Box sx={{ flexGrow: 1 }} />
 

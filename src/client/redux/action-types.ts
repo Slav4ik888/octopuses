@@ -18,6 +18,8 @@ export enum uiActionType {
   CLEAR_ERROR = `CLEAR_ERROR`,
   SET_MESSAGE = `SET_MESSAGE`,
   CLEAR_MESSAGE = `CLEAR_MESSAGE`,
+
+  SET_TARGET_SCROLL = `SET_TARGET_SCROLL`,
 };
 
 // Data reducer types
@@ -26,4 +28,6 @@ export enum dataActionType {
   LOADING_DATA_OFF = `LOADING_DATA_OFF`,
 
   SET_INITIAL = `SET_INITIAL`,
+
+  SET_UNREADED_COMMENTS = `SET_UNREADED_COMMENTS`,
 };

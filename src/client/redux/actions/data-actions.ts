@@ -5,7 +5,7 @@ import { Dispatch } from '../redux-types';
 // Functions
 import logger from '../../utils/client-logger/client-logger';
 // Types
-import { MessageType, WhoInProfile } from '../../../types/types';
+import { MessageType } from '../../../types/messages';
 import { UserStatusType, UserProfile } from '../../../types/user';
 import { FileOperationType, FileType } from '../../../types/files';
 

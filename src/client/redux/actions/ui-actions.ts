@@ -73,3 +73,9 @@ export const setErrors = (errors: Errors) => (dispatch: Dispatch) => {
 // Очищаем ошибки
 export const clearErrors = () => (dispatch: Dispatch) => dispatch({ type: uiActionType.CLEAR_ERROR });
 
+
+// Устанавливаем метку для перехода по scrollTo
+export const setTargetScroll = (data: string) => (dispatch: Dispatch) => dispatch({
+  type: uiActionType.SET_TARGET_SCROLL,
+  payload: data
+});

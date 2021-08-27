@@ -77,27 +77,28 @@ export const userSignup = (userData: UserSignupData, history: any[]) => async (d
 // // Повторная отправка ссылки для подтверждения почты
 
 
-// export const sendEmailConfirmation = (email: string) => async (dispatch: Dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
-//   try {
-//     const res = await api.get(`/sendEmailConfirmation/${email}`);
-//     dispatch({
-//       type: uiActionType.SET_MESSAGE,
-//       payload: {
-//         message: res.data.message,
-//         type: MessageType.SUCCESS,
-//         timeout: 6000,
-//       }
-//     });
-//     dispatch({ type: uiActionType.CLEAR_ERROR });
-//     dispatch({ type: userActionType.LOADING_USER_OFF });
+export const sendEmailConfirmation = (email: string) => async (dispatch: Dispatch) => {
+  dispatch({ type: userActionType.LOADING_USER });
+  try {
+    const res = await api.get(`/sendEmailConfirmation/${email}`);
+    dispatch({
+      type: uiActionType.SET_MESSAGE,
+      payload: {
+        message: res.data.message,
+        type: MessageType.SUCCESS,
+        timeout: 6000,
+      }
+    });
+    dispatch({ type: uiActionType.CLEAR_ERROR });
+    dispatch({ type: userActionType.LOADING_USER_OFF });
 
-//   } catch (err) {
-//     log(err);
-//     dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//   }
-// }
+  }
+  catch (err) {
+    log(err);
+    dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+    dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+  }
+}
 
 
 // Отправить ссылку для восстановления пароля
@@ -163,44 +164,39 @@ export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch)
 // }
 
 
-// // Выход пользователя
-// export const userLogout = () => async (dispatch: Dispatch) => {
-//   if (MODE_AUTH_TOKEN) {
-//     localStorage.removeItem(`OsnovaIdToken`);
-//     delete api.defaults.headers.common[`Authorization`];
-//   }
-//   else {
-//     try {
-//       await api.get(`/userLogout`);
+// Выход пользователя
+export const userLogout = () => async (dispatch: Dispatch) => {
+  try {
+    dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+    dispatch({ type: dataActionType.SET_INITIAL }); // Очищаем данные в data-reducer
+    dispatch({ type: uiActionType.CLEAR_ERROR });
+    
+    await api.get(`/userLogout`);
 
-//     } catch(err) {
-//       log(err);
-//     }
-//   }
-
-//   dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//   dispatch({ type: dataActionType.SET_INITIAL }); // Очищаем данные в data-reducer
-//   dispatch({ type: uiActionType.CLEAR_ERROR });
-// }
+  }
+  catch (err) {
+    log(err);
+  }
+}
 
 
-// // Получение данных о пользователе
-// export const getUserProfile = ({ companyId, userId }) => (dispatch: Dispatch) => {
-//   dispatch({ type: userActionType.LOADING_USER });
+// Получение данных о пользователе
+export const getUserProfile = ({ userId }) => (dispatch: Dispatch) => {
+  dispatch({ type: userActionType.LOADING_USER });
   
-//   return api.post(`/getUserProfile`, { companyId, userId })
-//     .then((res) => {
-//       dispatch({
-//         type: userActionType.SET_USER,
-//         payload: res.data,
-//       });
-//     })
-//     .catch((err) => {
-//       log(err);
-//       dispatch({ type: userActionType.SET_UNAUTHENTICATED });
-//       dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//     });
-// }
+  return api.post(`/getUserProfile`, { userId })
+    .then((res) => {
+      dispatch({
+        type: userActionType.SET_USER,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      log(err);
+      dispatch({ type: userActionType.SET_UNAUTHENTICATED });
+      dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+    });
+}
 
 
 // // Получение данных сразу и о компании и о пользователе
@@ -281,68 +277,54 @@ export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch)
 // }
 
 
-// // Обновляем данные о пользователе
-// export const updateUserProfile = (userProfile: UserProfile, type?: WhoInProfile) => async (dispatch: Dispatch) => {
-//   try {
-//     const res = await api.post(`/updateUserProfile`, userProfile);
-//     dispatch({
-//       type: uiActionType.SET_MESSAGE,
-//       payload: {
-//         message: res.data.message,
-//         type: MessageType.SUCCESS,
-//       },
-//     });
-
-//     // Если обновил Супервайзер курса, то обновить данные о пользователе в списке
-//     if (type === WhoInProfile.SUPER) {
-//       dispatch({
-//         type: dataActionType.ADMIN_UPDATE_USER_IN_ADMIN_USERS,
-//         payload: userProfile,
-//       });
-//     } else {
-//       dispatch({
-//         type: userActionType.SET_USER,
-//         payload: userProfile,
-//       });
-//     }
-//   } catch (err) {
-//     log(err);
-//     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//   }
-// }
+// Обновляем данные о пользователе
+export const updateUserProfile = (userProfile: UserProfile) => async (dispatch: Dispatch) => {
+  try {
+    const res = await api.post(`/updateUserProfile`, userProfile);
+    dispatch({
+      type: uiActionType.SET_MESSAGE,
+      payload: {
+        message: res.data.message,
+        type: MessageType.SUCCESS,
+      },
+    });
+  }
+  catch (err) {
+    log(err);
+    dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+  }
+}
 
 
-
-
-// // Удаляем пользователя
-// export const deleteUser = (companyId: string, userId: string) => async (dispatch) => {
-//   try {
-//     const res = await api.delete(`/deleteUser/${companyId}/${userId}`);
+// Удаляем пользователя
+export const deleteUser = (userId: string) => async (dispatch) => {
+  try {
+    const res = await api.delete(`/deleteUser/${userId}`);
     
-//     let type: MessageType, message: string;
+    let type: MessageType, message: string;
     
-//     if (res.data?.message) {
-//       message = res.data?.message;
-//       type = MessageType.SUCCESS;
-//       dispatch(userLogout());
-//     }
-//     else if (res.data?.warning) {
-//       message = res.data?.warning;
-//       type = MessageType.WARNING;
-//     }
-//     else if (res.data?.error) {
-//       message = res.data?.error;
-//       type = MessageType.ERROR;
-//     }
+    if (res.data?.message) {
+      message = res.data?.message;
+      type = MessageType.SUCCESS;
+      dispatch(userLogout());
+    }
+    else if (res.data?.warning) {
+      message = res.data?.warning;
+      type = MessageType.WARNING;
+    }
+    else if (res.data?.error) {
+      message = res.data?.error;
+      type = MessageType.ERROR;
+    }
 
-//     dispatch({ type: uiActionType.SET_MESSAGE, payload: { message, type, timeout: 30000 } });
-//   }
-//   catch (err) {
-//     log(err);
-//     dispatch({ type: uiActionType.SET_MESSAGE, payload: { message: err.response?.data.error, type: MessageType.ERROR } });
-//     dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
-//   }
-// }
+    dispatch({ type: uiActionType.SET_MESSAGE, payload: { message, type, timeout: 30000 } });
+  }
+  catch (err) {
+    log(err);
+    dispatch({ type: uiActionType.SET_MESSAGE, payload: { message: err.response?.data.error, type: MessageType.ERROR } });
+    dispatch({ type: uiActionType.SET_ERROR, payload: err.response?.data });
+  }
+}
 
 
 

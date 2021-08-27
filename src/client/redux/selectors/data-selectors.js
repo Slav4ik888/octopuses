@@ -5,4 +5,6 @@ import { hasSomeoneChanges } from '../../utils/has-someone-changes/index.js';
 
 const getProps = (_, props) => props;
 
+
 export const getLoadingData             = (state) => state.data.loading;
+export const getUnreadedComments        = (state) => state.data.unreadedComments;

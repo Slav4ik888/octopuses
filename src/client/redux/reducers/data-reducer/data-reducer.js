@@ -9,6 +9,7 @@ import { UserStatusType } from '../../../../types/user.ts';
 const initialState = {
   loading: false,
   
+  unreadedComments: [],
 };
 
 
@@ -20,16 +21,23 @@ export default function (state = initialState, action) {
         loading: true,
       });
     
+    
     case dataActionType.LOADING_DATA_OFF: // test ---
       return extend(state, {
         loading: false,
       });
     
+    
     case dataActionType.SET_INITIAL: // test ---
       return initialState;
     
     
-     
+    case dataActionType.SET_UNREADED_COMMENTS: // test ---
+      return extend(state, {
+        unreadedComments: false,
+      });
+    
+    
     default: return state;
   }
 };

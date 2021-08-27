@@ -1,0 +1,1 @@
+export function createTitleByValue(type: `comments` | `notifications`, value: number): string;

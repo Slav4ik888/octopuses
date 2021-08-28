@@ -18,7 +18,17 @@ export const isEmpty = (str) => {
     return false;
   }
 };
+
 export const isNoEmpty = (str) => !isEmpty(str);
+
+
+export const getPhone = (str) => str.replace(/\D/g, ``);
+
+
+export const isValidPhone = (str) => {
+  const reg = getPhone(str);
+  return reg.length === 11;
+};
 
 
 // Возвращает true если строка допустимого значения
@@ -97,10 +107,11 @@ export const validationSignupData = (data) => {
   // Проверка middleName
   if (!isValidMaxL30(data.middleName)) errors.middleName = `Отчество не должна превышать 30 символов`;
 
+  // Проверка валидности номера
+  if (!isValidPhone(data.mobileNumber)) errors.mobileNumber = `Не корректный номер телефона`;
   // Проверка mobileNumber?: string;   // Номер телефона
   if (isEmpty(data.mobileNumber)) errors.mobileNumber = `Поле "Номер телефона" не должно быть пустым`;
-  // TODO: проверка валидности номера
-
+  
   // Проверка пароля
   if (isEmpty(data.password)) errors.password = `Поле "Пароль" не должно быть пустым`;
   if (data.password.length < 6) errors.password = `Пароль должен содержать более 6 символов`;

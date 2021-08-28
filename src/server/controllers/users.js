@@ -216,13 +216,29 @@ export async function userLogin(ctx, next) {
 }
 
 
+// Clear cookie
+export async function userLogout(ctx, next) {
+  try {
+    loggerUser.info(`[userLogout] - ${ctx.state.user.email} вышел`);
+    ctx.cookies.set(`session`, ``)
+    ctx.redirect('/');
+
+  }
+  catch (err) {
+    loggerUser.error(`[userLogout] - [${ctx.state.user.email}] - ${err}`);
+    ctx.status = 500;
+    ctx.body = { general: err.code };
+  }
+};
+
+
 export async function getAllUserData(ctx, next) {
   try {
-    loggerUser.info(`[getAllUserData] - [${ctx.user.email}]...`);
+    loggerUser.info(`[getAllUserData] - [${ctx.state.user.email}]...`);
 
     const data = await db
       .collection(`users`)
-      .where(`userId`, `==`, ctx.user.uid)
+      .where(`userId`, `==`, ctx.state.user.uid)
       .limit(1)
       .get();
     
@@ -232,24 +248,43 @@ export async function getAllUserData(ctx, next) {
   catch (err) {
     switch (err.code) {
       case `auth/user-not-found`:
-        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - Пользователь с таким email не найден...`);
+        loggerUser.error(`[getAllUserData] - [${ctx.state.user.email}] - Пользователь с таким email не найден...`);
         ctx.status = 403;
         ctx.body = { email: `Пользователь с таким email не найден` };
         return;
       
       case `auth/wrong-password`:
-        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - Не верный пароль...`);
+        loggerUser.error(`[getAllUserData] - [${ctx.state.user.email}] - Не верный пароль...`);
         rctx.status = 403;
         ctx.body = { password: `Не верный пароль, попробуйте ещё раз` };
         return;
         
       default:
-        loggerUser.error(`[getAllUserData] - [${ctx.user.email}] - ${err}`);
+        loggerUser.error(`[getAllUserData] - [${ctx.state.user.email}] - ${err}`);
         ctx.status = 500;
         ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
     }
   }
 }
+
+
+export async function updateUserProfile(ctx, next) {
+  try {
+    loggerUser.info(`[updateUserProfile] - [${ctx.state.user.email}]...`);
+
+  }
+  catch {
+    loggerUser.error(`[getAllUserData] - [${ctx.state.user.email}] - ${err}`);
+    ctx.status = 500;
+    ctx.body = { general: `Что-то пошло не так. Мы уже отправили разработчику отчёт об этом... Вскоре, всё починят......` };
+    return;
+  }
+}
+
+
+
+
+
 
 // TESTING
 

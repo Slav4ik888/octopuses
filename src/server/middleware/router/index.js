@@ -15,7 +15,9 @@ router.get(`/getPolicy`, ui.getPolicy);
 router.post(`/userSignup`, u.userSignup);
 router.post(`/sendPasswordResetEmail`, u.sendPasswordResetEmail);
 router.post(`/userLogin`, u.userLogin);
+router.get(`/userLogout`, u.userLogout);
 router.get(`/getAllUserData`, FBAuth, u.getAllUserData);
+router.post(`/updateUserProfile`, FBAuth, u.updateUserProfile);
 
 // Testing
 router.get(`/hello`, u.hello);

@@ -17,7 +17,7 @@ export default async function (ctx, next) {
   
     if (!sessionCookie) throw new NotAutorized(`Не авторизован`)
   
-    ctx.user = await admin
+    ctx.state.user = await admin
       .auth()
       .verifySessionCookie(sessionCookie, true /** checkRevoked */);
     

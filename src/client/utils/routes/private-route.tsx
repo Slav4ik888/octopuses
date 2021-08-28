@@ -1,7 +1,7 @@
 import * as React from 'react';
 // Redux
 import { connect } from 'react-redux';
-import { getAuthenticated, getIsRoleSuper, getIsDemoSubscribe, getIsSubscribe } from '../../redux/selectors/user-selectors';
+import { getAuthenticated, getIsRoleSuper } from '../../redux/selectors/user-selectors';
 // Routes
 import {Route, Redirect} from 'react-router-dom';
 import route from './routes';
@@ -25,11 +25,7 @@ const PrivateRoute: React.FC<Props> = ({ component: Component, exact, path, auth
       exact={exact}
       path={path}
       render={(props) => {
-        if (
-          authenticated && isDemoSubscribe ||
-          authenticated && isSubscribe ||
-          isRoleSuper
-        ) {
+        if ( authenticated || isRoleSuper ) {
           return <Component {...props} />
         }
         else {
@@ -42,8 +38,6 @@ const PrivateRoute: React.FC<Props> = ({ component: Component, exact, path, auth
 
 const mapStateToProps = (state) => ({
   authenticated: getAuthenticated(state),
-  isSubscribe: getIsSubscribe(state),
-  isDemoSubscribe: getIsDemoSubscribe(state),
   isRoleSuper: getIsRoleSuper(state),
 });
 

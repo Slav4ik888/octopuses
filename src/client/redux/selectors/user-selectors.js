@@ -11,3 +11,4 @@ export const getIsEmailVerified    = (state) => state.user.userProfile?.emailVer
 export const getUserEmail          = (state) => state.user.userProfile.email;
 export const getUserId             = (state) => state.user.userProfile.userId;
 export const getUserRole           = (state) => state.user.userProfile.role;
+export const getIsRoleSuper        = (state) => state.user.userProfile.role === Role.SUPER;

@@ -7,6 +7,7 @@ import PrivateRoute from './utils/routes/private-route';
 import AdminRoute from './utils/routes/admin-route';
 import route from './utils/routes/routes';
 // Pages
+import Root from './pages/root/root';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 // import Policy from './pages/policy/policy';
@@ -14,7 +15,6 @@ import Signup from './pages/signup/signup';
 // Components
 import Navbar from './components/navbar/navbar';
 import MessageBar from './components/dialogs/message-bar/message-bar';
-// import Root from './pages/root/root';
 // import Footer from './components/footer/footer';
 // import AcceptCookie from './components/auth/accept-cookie/accept-cookie';
 
@@ -60,7 +60,7 @@ const App = () => {
             /> */}
             
             
-            <Route exact path={route.ROOT} component={Signup} />
+            <Route exact path={route.ROOT} component={Root} />
             {/* <Route exact path={route.POLICY} component={Policy} /> */}
 
             <Route

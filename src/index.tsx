@@ -23,4 +23,4 @@ ReactDOM.render(
   , document.getElementById('root'));
 
 
-// git add . && git commit -m "add isValidPhone" && git push -u origin master
+// git add . && git commit -m "end first setup octopuses" && git push -u origin master

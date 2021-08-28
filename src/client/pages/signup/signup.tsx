@@ -35,7 +35,6 @@ import { LOCATION } from '../../../consts';
 
 
 const locations = arrFromObjByObj(LOCATION, `LOCATION`);
-console.log('locations: ', locations);
 
 
 

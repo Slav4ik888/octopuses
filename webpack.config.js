@@ -68,18 +68,18 @@ export default {
   resolve: {
     extensions: [`*`, `.js`, `.jsx`, `.json`, `.css`, `.ts`, `.tsx`]
   },
-  devServer: {
-    port: 3000,
-    open: true,
-    historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:8080'
-    }
-  },
+  // devServer: {
+  //   port: 3000,
+  //   open: true,
+  //   historyApiFallback: true,
+  //   proxy: {
+  //     '/api': 'http://localhost:8080'
+  //   }
+  // },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: `Осьминожки`,
+      title: `Осьминожки - товары для здоровья`,
       template: './public/index.html',
       favicon: './public/img/favicon.png'
     })

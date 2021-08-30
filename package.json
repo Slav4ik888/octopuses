@@ -1,7 +1,7 @@
 {
   "name": "octopuses",
   "version": "1.0.0",
-  "description": "Осьминожки",
+  "description": "Товары для здоровья - Осьминожки",
   "private": true,
   "type": "module",
   "scripts": {

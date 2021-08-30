@@ -7,7 +7,8 @@ import MenuBtns from './menu-bns/menu-btns';
 import AuthBtn from './auth-btn/auth-btn';
 // Types
 import { State } from '../../../redux/redux-types';
-
+// Consts
+import { ENV } from '../../../../consts';
 
 type Props = {
   authenticated: boolean;
@@ -16,6 +17,8 @@ type Props = {
 
 // Кнопки Navbar авторизация и профилей
 const NavbarMenuBtns: React.FC<Props> = ({ authenticated }) => {
+  if (ENV === `development` ) return null;
+
   return (
     <>
       <AuthBtn authenticated={authenticated} />

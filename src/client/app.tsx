@@ -10,6 +10,7 @@ import route from './utils/routes/routes';
 import Root from './pages/root/root';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
+import Catalog from './pages/catalog/catalog';
 // import Policy from './pages/policy/policy';
 
 // Components
@@ -48,6 +49,7 @@ const App = () => {
           <MessageBar />
         
           <Switch>
+            <Route exact path={route.CATALOG} component={Catalog} />
             <AuthRoute exact path={route.SIGNUP} component={Signup} />
             <AuthRoute exact path={route.LOGIN} component={Login} />
 

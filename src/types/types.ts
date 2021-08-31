@@ -16,6 +16,7 @@ export enum RouteType {
   ROOT = `/`,                      // Корневая папка
   LOGIN = `/login`,
   SIGNUP = `/singup`,
+  CATALOG = `/catalog`,            // Каталог товаров
 
   POLICY = `/privacy-policy`,      // Политика конфиденциальности
 

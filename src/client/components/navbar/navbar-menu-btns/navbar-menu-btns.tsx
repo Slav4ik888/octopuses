@@ -8,7 +8,7 @@ import AuthBtn from './auth-btn/auth-btn';
 // Types
 import { State } from '../../../redux/redux-types';
 // Consts
-import { ENV } from '../../../../consts';
+import { ENV } from '../../../../consts/consts';
 
 type Props = {
   authenticated: boolean;

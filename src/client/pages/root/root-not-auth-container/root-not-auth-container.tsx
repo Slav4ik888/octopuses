@@ -2,8 +2,6 @@ import * as React from 'react';
 // MUI Stuff
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
 
@@ -69,7 +67,7 @@ const RootNotAuthContainer: React.FC<Props> = ({ authenticated }) => {
             lineHeight: 1.2,
             zIndex: 200,
             color: `secondary.main`,
-            textShadow: `2px 2px 6px #6ab2dd`,
+            textShadow: `1px 1px 4px #6ab2dd`,
           }}
         >
           Осьминожки

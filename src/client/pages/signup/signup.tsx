@@ -31,7 +31,7 @@ import { arrFromObjByObj } from '../../../utils/objects/objects/objects';
 import { ListSelectType } from '../../../types/btn';
 import { Errors } from '../../../types/results';
 import { ToggleLoginSignup, UserSignupData } from '../../../types/user';
-import { LOCATION } from '../../../consts';
+import { LOCATION } from '../../../consts/consts';
 
 
 const locations = arrFromObjByObj(LOCATION, `LOCATION`);

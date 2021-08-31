@@ -31,7 +31,7 @@ const VerifyValidate: React.FC<Props> = ({ email }) => {
           flexDirection: `column`,
           p: {xs: 1, sm: 4},
           mt: 3, mr: 0, ml: 0, mb: 5,
-          backgroundColor: themes.background.paper,
+          // backgroundColor: themes.background.paper,
           position: `relative`,
           zIndex: 100,
         }}

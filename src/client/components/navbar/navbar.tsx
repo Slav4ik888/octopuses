@@ -11,7 +11,7 @@ import NavbarMenuBtns from './navbar-menu-btns/navbar-menu-btns';
 import NavbarUser from './navbar-user/navbar-user';
 // Types
 import { LogoBtnType } from '../../../types/btn';
-
+import themes from '../../utils/themes/themes';
 
 
 
@@ -20,7 +20,13 @@ const Navbar: React.FC = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ maxHeight: 64 }}>
+      <AppBar
+        position="static"
+        sx={{
+          maxHeight: 64,
+          backgroundColor: themes.header.background
+        }}
+      >
         <Toolbar>
 
           <LogoBtn type={LogoBtnType.NAV_UP} />

@@ -65,7 +65,13 @@ const DeleteButton: React.FC<Props> = ({ type, icon, button, placement, classnam
   const handleIsHoverOff = () => setIsHover(false);
 
   const iconActiveDel = sxActiveDel ? sxActiveDel : { color: `secondary` };
-  
+  const iconButton = Object.assign({
+      color: themes.main.background,
+      '&:hover': iconActiveDel,
+    },
+    classname
+  );
+
   return (
     <>
       {
@@ -79,13 +85,7 @@ const DeleteButton: React.FC<Props> = ({ type, icon, button, placement, classnam
           >
             <IconButton
               aria-label="Delete"
-              sx={Object.assign(
-                {
-                  color: themes.background.bodyfield,
-                  '&:hover': iconActiveDel,
-                },
-                classname
-              )}
+              sx={iconButton}
               onMouseEnter={handleIsHoverOn} onMouseLeave={handleIsHoverOff}
               onClick={handleOpenConfirm}
             >

@@ -1,0 +1,103 @@
+import { GoodsVariety, GoodsType } from '../types/catalog.ts';
+
+export default [
+  {
+    id: `001`,
+    label: `Массажер МФР TRIGGER PYRAMID`,
+    article: `TPFS20`,
+    rest: 5,
+    images: [{
+      id: `1`,
+      label: `Массажер МФР TRIGGER PYRAMID`,
+      url_sm: `./img/goods/l-15-sm.jpg`,
+      url: `./img/goods/l-15.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.GOODS,
+    types: [GoodsType.ANY], 
+  }, {
+    id: `002`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: 0,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }, {
+    id: `003`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: 5,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }, {
+    id: `004`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: 5,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }, {
+    id: `005`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: -1,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }, {
+    id: `006`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: 5,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }, {
+    id: `007`,
+    label: `Стельки FizioStep XL`,
+    article: `TPFS20`,
+    rest: 5,
+    images: [{
+      id: `1`,
+      label: `Стельки FizioStep XL`,
+      url_sm: `./img/goods/l-18-sm.jpg`,
+      url: `./img/goods/l-18.jpg`,
+      order: 100,
+    }],
+    variety: GoodsVariety.INSOLES,
+    types: [GoodsType.MAN], 
+  }
+];

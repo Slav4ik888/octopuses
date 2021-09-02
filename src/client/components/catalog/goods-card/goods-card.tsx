@@ -15,7 +15,7 @@ import logger from '../../../utils/client-logger/client-logger';
 // Types
 import { Goods } from '../../../../types/catalog';
 
-const log = logger(`[Goods]`);
+const log = logger(`Goods`);
 
 
 type Props = {
@@ -36,6 +36,7 @@ const GoodsCard: React.FC<Props> = ({ goods }) => {
         minWidth: `200px`,
         maxWidth: `250px`,
         m: { xs: 0, sm: 1 },
+        mt: { xs: 1, sm: 1 },
         p: { xs: 1, sm: 2 },
         backgroundColor: `white`,
       }}

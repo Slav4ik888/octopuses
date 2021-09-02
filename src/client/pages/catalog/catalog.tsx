@@ -22,8 +22,7 @@ const Catalog: React.FC<Props> = ({  }) => {
         p: { xs: 0, sm: 2 },
         width: `100%`,
         maxWidth: `1200px`,
-        // backgroundColor: themes.main.background,
-        background: `radial-gradient(#3c83af, #0d5b89 60%)`
+        background: `radial-gradient(${themes.main.background1}, ${themes.main.background2} 60%)`, // #3c83af, #0d5b89 60%)`
       }}
     >
       <CatalogList />

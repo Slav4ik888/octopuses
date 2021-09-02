@@ -1,9 +1,10 @@
 export default {
   header: {
-    background: `#0a4f78`,
+    background: `#e1f5fe`,
   },
   main: {
-    background: `#0d5b89`,
+    background1: `#e1f5fe`,
+    background2: `#b4d5e8`,
   },
 
   
@@ -23,7 +24,9 @@ export default {
     },
   },
   
-  
+  delete_button: {
+    icon_background: `#6ab2dd`,
+  },
   footer: {
     linkNoAuth: {
       color: `#b3b3b3`,

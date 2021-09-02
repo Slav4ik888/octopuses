@@ -66,7 +66,7 @@ const DeleteButton: React.FC<Props> = ({ type, icon, button, placement, classnam
 
   const iconActiveDel = sxActiveDel ? sxActiveDel : { color: `secondary` };
   const iconButton = Object.assign({
-      color: themes.main.background,
+      color: themes.delete_button.icon_background,
       '&:hover': iconActiveDel,
     },
     classname

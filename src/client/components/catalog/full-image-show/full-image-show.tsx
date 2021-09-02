@@ -3,18 +3,10 @@ import * as React from 'react';
 import Box from '@material-ui/core/Box';
 // Components
 import DialogInfo from '../../dialogs/dialog-info/dialog-info';
+// Functions
+import { getImagePath } from '../../../utils/path/path';
 // Types
 import { GoodsImage } from '../../../../types/catalog';
-
-
-
-  // img: {
-  //   margin: theme.spacing(0),
-  //   padding: theme.spacing(0),
-  //   width: `100%`,
-  //   boxShadow: `none`,
-  //   border: `none`,
-  // },
 
 
 type Props = {
@@ -25,7 +17,6 @@ type Props = {
 
 
 const FullImageShow: React.FC<Props> = ({ open, item, onClose }) => {
-
 
   const FullImage = (<Box
     sx={{
@@ -41,7 +32,7 @@ const FullImageShow: React.FC<Props> = ({ open, item, onClose }) => {
       backgroundColor: `#fff`,
       boxShadow: `1px 1px 7px #c1e3f5`,
     }}>
-    <img src={item.url} alt={item.label} style={{ width: `100%` }} />
+    <img src={getImagePath(item.url)} alt={item.label} style={{ width: `100%` }} />
   </Box>);
 
 

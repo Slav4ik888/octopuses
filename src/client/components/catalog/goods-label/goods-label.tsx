@@ -17,7 +17,6 @@ type Props = {
 
 // Заголовок товара
 const GoodsLabel: React.FC<Props> = ({ label }) => {
-  log(`label: `, label);
 
   return (
     <Tooltip title={label} placement="top" arrow enterDelay={200} enterNextDelay={1000}>

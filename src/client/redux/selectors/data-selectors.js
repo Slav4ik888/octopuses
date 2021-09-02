@@ -6,4 +6,5 @@ const getProps = (_, props) => props;
 
 
 export const getLoadingData             = (state) => state.data.loading;
+export const getCatalog                 = (state) => state.data.catalog;
 export const getUnreadedComments        = (state) => state.data.unreadedComments;

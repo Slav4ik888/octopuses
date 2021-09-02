@@ -21,6 +21,7 @@ import MessageBar from './components/dialogs/message-bar/message-bar';
 
 // Functions
 import { checkAuth } from '../utils/auth/check-auth/check-auth';
+import getCatalog from './components/catalog/utils/get-catalog';
 // import { checkAcceptCookie } from '../utils/auth/accept-cookie/accept-cookie';
 import { ListSelectType } from '../types/btn';
 import { history } from './utils/routes/history';
@@ -30,12 +31,11 @@ import screenListener from './utils/screens/listener-rezise-screen';
 // checkAcceptCookie();  // Check is user accept cookie and set in Store
 checkAuth();          // Проверяем есть ли актуальный cookie или токен пользователя
 screenListener();     // Слушатель на изменение размеров экрана
-
+getCatalog();         // Загружаем каталог с товарами
 
 
 
 const App = () => {
-
 
   return (
     <div className="wrapper">

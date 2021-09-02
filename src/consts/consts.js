@@ -5,6 +5,7 @@ export const SITE_TITLE = {
 
 export const ASSEMBLY_TIME = `2021-08-31 20:00`;
 export const ENV = `development`;
+export const MAX_FREQUENCY_FROM_GOOGLE = 10 * 60 * 1000;
 
 export const SITE_URL = `http://course.thm.su`;
 export const SITE_URL_LOGIN = `http://course.thm.su/login`;

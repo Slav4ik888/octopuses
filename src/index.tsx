@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import "regenerator-runtime/runtime";
-// import dotenv from './server/utils/dotenv/index.js'; // Чтобы читать process.env
+import dotenv from './utils/dotenv/index.js'; // Чтобы читать process.env
 // Redux
 import { Provider } from 'react-redux';
 import store from './client/redux/store.js';
@@ -23,4 +23,4 @@ ReactDOM.render(
   , document.getElementById('root'));
 
 
-// git add . && git commit -m "start CatalogPage" && git push -u origin master
+// git add . && git commit -m "add foto to catalog" && git push -u origin master

@@ -26,9 +26,14 @@ export interface GoodsImage {
 export interface Goods {
   id: string,                  // Id товара
   label: string,               // Наименование товара
+  description: string,         // Описание товара
   article: string,             // Артикул товара
   rest: number,                // Остаток на складе
   images: Array<GoodsImage>,   // Картинки товара
   variety: GoodsVariety,       // Разновидность товара
-  types: Array<GoodsType>,   // Types of goods to which the goods belon
+  types: Array<GoodsType>,     // Types of goods to which the goods belon
+  price: number,               // Цена без скидки
+  discount: number,            // Скидка в %
+  discountPrice: number,       // Цена со скидкой
+  arriveExpected: string,      // Ожидается поступление (дата)
 };

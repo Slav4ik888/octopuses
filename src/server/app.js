@@ -1,7 +1,7 @@
 import Koa from 'koa';
 // import cookie from 'koa-cookie';
 
-import dotenv from './utils/dotenv/index.js';
+import dotenv from '../utils/dotenv/index.js';
 import middleware from './middleware/index.js';
 // Functions
 import { loggerServer } from './libs/loggers/index.js';

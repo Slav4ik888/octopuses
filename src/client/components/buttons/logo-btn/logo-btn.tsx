@@ -66,7 +66,7 @@ const LogoBtn: React.FC<Props> = ({ type }) => {
   return (
     <Link to={RouteType.ROOT}>
       <Box sx={logo} >
-        <img src="./img/logo.png" alt="Логотип" style={{ height: `100%` }} />
+        <img src="./img/logo_rec.png" alt="Логотип" style={{ height: `100%` }} />
       </Box>
     </Link>
   );

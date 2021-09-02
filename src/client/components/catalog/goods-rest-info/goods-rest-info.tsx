@@ -20,7 +20,6 @@ type Props = {
 
 // Заголовок товара
 const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
-  log(`rest: `, rest);
 
   const title = React.useMemo(() => rest > 0 ? `В наличии` : `Под заказ`, [rest]);
   const color = React.useMemo(() => rest > 0 ? themes.catalog.goods_card.rest_label.available : themes.catalog.goods_card.rest_label.not_available, [rest]);

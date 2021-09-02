@@ -1,27 +1,27 @@
 import * as React from 'react';
 // Redux Stuff
 import { connect } from 'react-redux';
-// import { updateOneTask} from '../../redux/actions/data-actions';
+import { getCatalog as getCatalogFromStore } from '../../../redux/selectors/data-selectors';
 // import { getUserId } from '../../../redux/selectors/user-selectors';
 import { State } from '../../../redux/redux-types';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
 // Components
 import GoodsCard from '../goods-card/goods-card';
-// Functions
 // Types
-// Consts
-import catalog from '../../../../consts/catalog';
-console.log('catalog: ', catalog);
+import { Goods } from '../../../../types/catalog';
 
 
 type Props = {
-  
-}
+  catalog: Array<Goods>,
+};
 
 
 // Страница для каталога товаров
-const CatalogList: React.FC<Props> = ({  }) => {
+const CatalogList: React.FC<Props> = ({ catalog }) => {
+  console.log('catalog: ', catalog);
+
+  if (!catalog.length) return null;
 
 
   return (
@@ -40,6 +40,7 @@ const CatalogList: React.FC<Props> = ({  }) => {
 };
 
 const mapStateToProps = (state: State) => ({
+  catalog: getCatalogFromStore(state),
 });
 
 const mapActionsToProps = {

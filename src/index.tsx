@@ -23,4 +23,4 @@ ReactDOM.render(
   , document.getElementById('root'));
 
 
-// git add . && git commit -m "add foto to catalog" && git push -u origin master
+// git add . && git commit -m "fix catalog" && git push -u origin master

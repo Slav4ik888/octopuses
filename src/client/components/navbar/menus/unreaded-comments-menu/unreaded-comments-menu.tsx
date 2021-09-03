@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setTargetScroll } from '../../../../redux/actions/ui-actions';
 // Routes
 import { Link } from 'react-router-dom';
-import route from '../../../../utils/routes/routes';
+import { RouteType } from '../../../../utils/routes/routes';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -46,7 +46,7 @@ const UnreadedCommentsMenu: React.FC<Props> = ({ open, anchorEl, menuId, unreade
     >
       {
         unreadedComments.map(comment => <MenuItem onClick={() => handleCommentClick(comment)} key={comment.id}>
-          <Link to={`${route.ROOT}/taskId=${comment.id}`} >
+          <Link to={`${RouteType.ROOT}/taskId=${comment.id}`} >
             <Box sx={{ display: `flex`, alignItems: `center` }}>
               <Box sx={{
                 mr: 2,

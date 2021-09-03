@@ -5,12 +5,15 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import AuthRoute from './utils/routes/auth-route';
 import PrivateRoute from './utils/routes/private-route';
 import AdminRoute from './utils/routes/admin-route';
-import route from './utils/routes/routes';
+import { RouteType } from './utils/routes/routes';
 // Pages
 import Root from './pages/root/root';
 import Login from './pages/login/login';
 import Signup from './pages/signup/signup';
 import Catalog from './pages/catalog/catalog';
+import Appointment from './pages/appointment/appointment';
+import Diagnostics from './pages/diagnoctics/diagnoctics';
+import Contacts from './pages/contacts/contacts';
 // import Policy from './pages/policy/policy';
 
 // Components
@@ -49,21 +52,25 @@ const App = () => {
           <MessageBar />
         
           <Switch>
-            <Route exact path={route.CATALOG} component={Catalog} />
-            <AuthRoute exact path={route.SIGNUP} component={Signup} />
-            <AuthRoute exact path={route.LOGIN} component={Login} />
+            <Route exact path={RouteType.ROOT} component={Root} />
+            <Route exact path={RouteType.CATALOG} component={Catalog} />
+            <Route exact path={RouteType.APPOINTMENT} component={Appointment} />
+            <Route exact path={RouteType.DIAGNOSTICS} component={Diagnostics} />
+            <Route exact path={RouteType.CONTACTS} component={Contacts} />
 
-            {/* <PrivateRoute exact path={route.COURSE} component={CourseContainer} /> */}
+            <AuthRoute exact path={RouteType.SIGNUP} component={Signup} />
+            <AuthRoute exact path={RouteType.LOGIN} component={Login} />
 
-            {/* <AdminRoute exact path={route.USERS}
+            {/* <PrivateRoute exact path={RouteType.COURSE} component={CourseContainer} /> */}
+
+            {/* <AdminRoute exact path={RouteType.USERS}
               render={() => <AdminUsersContainer 
                 type={ListSelectType.USERS}
               />}
             /> */}
             
             
-            <Route exact path={route.ROOT} component={Root} />
-            {/* <Route exact path={route.POLICY} component={Policy} /> */}
+            {/* <Route exact path={RouteType.POLICY} component={Policy} /> */}
 
             <Route
               render={() => (
@@ -73,7 +80,7 @@ const App = () => {
                     <br />
                     <small>Page not found</small>
                   </h1>
-                  <Redirect to={route.ROOT} />
+                  <Redirect to={RouteType.ROOT} />
                 </>
               )}
             />

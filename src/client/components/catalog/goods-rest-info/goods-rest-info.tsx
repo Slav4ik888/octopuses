@@ -33,14 +33,13 @@ const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
     >
       <Typography
         sx={{
-          width: `90px`,
           color,
           backgroundColor: themes.catalog.goods_card.rest_label.background,
           fontWeight: 200,
           fontSize: `0.7rem`,
           borderRadius: `4px`,
           textAlign: `center`,
-          padding: `2px 5px`,
+          padding: `2px 8px`,
           mt: 1,
         }}
       >

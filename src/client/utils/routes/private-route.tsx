@@ -2,9 +2,10 @@ import * as React from 'react';
 // Redux
 import { connect } from 'react-redux';
 import { getAuthenticated, getIsRoleSuper } from '../../redux/selectors/user-selectors';
+import { State } from '../../redux/redux-types';
 // Routes
 import {Route, Redirect} from 'react-router-dom';
-import route from './routes';
+import { RouteType } from './routes';
 
 
 type Props = {
@@ -29,14 +30,14 @@ const PrivateRoute: React.FC<Props> = ({ component: Component, exact, path, auth
           return <Component {...props} />
         }
         else {
-          return <Redirect to={route.ROOT} />
+          return <Redirect to={RouteType.ROOT} />
         }
       }}
     />
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: State) => ({
   authenticated: getAuthenticated(state),
   isRoleSuper: getIsRoleSuper(state),
 });

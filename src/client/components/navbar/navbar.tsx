@@ -1,6 +1,5 @@
 import * as React from 'react';
 // MUI Stuff
-import { styled, alpha } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import LogoBtn from '../buttons/logo-btn/logo-btn';
 import NavbarMenuBtns from './navbar-menu-btns/navbar-menu-btns';
 import NavbarUser from './navbar-user/navbar-user';
+import NavbarNoUser from './navbar-no-user/navbar-no-user';
 // Types
 import { LogoBtnType } from '../../../types/btn';
 import themes from '../../utils/themes/themes';
@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
         position="static"
         sx={{
           maxHeight: 64,
+          color: themes.header.color,
           backgroundColor: themes.header.background
         }}
       >
@@ -34,6 +35,7 @@ const Navbar: React.FC = () => {
           <Box sx={{ flexGrow: 1 }} />
 
           <NavbarUser />
+          <NavbarNoUser />
 
           <Box sx={{ flexGrow: 1 }} />
 

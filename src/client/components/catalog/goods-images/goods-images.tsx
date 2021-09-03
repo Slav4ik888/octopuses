@@ -29,6 +29,8 @@ const GoodsImages: React.FC<Props> = ({ images }) => {
       <Box
         onClick={handleFullImageOpen}
         sx={{
+          overflowY: `hidden`,
+          height: `120px`,
           cursor: `pointer`,
         }}
       >

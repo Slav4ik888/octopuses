@@ -2,7 +2,7 @@ import * as React from 'react';
 import cl from 'classnames';
 // Routes
 import { Link, Redirect } from 'react-router-dom';
-import route from '../../../utils/routes/routes';
+import { RouteType } from '../../../utils/routes/routes';
 // Redux Stuff
 import { connect } from 'react-redux';
 import { State } from '../../../redux/redux-types';

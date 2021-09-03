@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 // Functions
-import Route from '../../../../../utils/routes/routes';
+import { RouteType } from '../../../../../utils/routes/routes';
 // Types
 import { ToggleLoginSignup } from '../../../../../../types/user';
 
@@ -20,13 +20,13 @@ const ActionToggle: React.FC<Props> = (props: Props) => {
 
   switch (type) {
     case ToggleLoginSignup.LOGIN:
-      route = Route.SIGNUP;
+      route = RouteType.SIGNUP;
       text = `Нет аккаунта? - `;
       link = `зарегистрируйтесь`;
       break;
     
     case ToggleLoginSignup.SIGNUP:
-      route = Route.LOGIN;
+      route = RouteType.LOGIN;
       text = `Уже есть аккаунт? - `;
       link = `войдите`;
       break;

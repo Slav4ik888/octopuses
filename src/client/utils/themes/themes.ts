@@ -1,5 +1,6 @@
 export default {
   header: {
+    color: `#007d94`,
     background: `#e1f5fe`,
   },
   main: {

@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { RouteType } from '../../../utils/routes/routes';
 // MUI Stuff
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 // Types & Consts
-import { RouteType, siteTitle } from '../../../../types/types';
+import { siteTitle } from '../../../../types/types';
 
 
 export default function Copyright(props: any) {

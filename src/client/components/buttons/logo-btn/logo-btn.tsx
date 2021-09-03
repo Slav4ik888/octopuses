@@ -2,12 +2,12 @@ import * as React from 'react';
 import cl from 'classnames';
 // Routes
 import { Link } from 'react-router-dom';
+import { RouteType } from '../../../utils/routes/routes';
 // MUI Stuff
 // import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 // Types & Consts
 import { LogoBtnType } from '../../../../types/btn';
-import { RouteType } from '../../../../types/types';
 
 
 const logeStyle = {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import route from '../../utils/routes/routes.js';
+import { RouteType } from '../../utils/routes/routes';
 // Redux
 import { userActionType, uiActionType, dataActionType } from '../action-types';
 import { Dispatch } from '../redux-types';
@@ -63,7 +63,7 @@ export const userSignup = (userData: UserSignupData, history: any[]) => async (d
       }
     });
 
-    history.push(route.ROOT);
+    history.push(RouteType.ROOT);
 
     dispatch({ type: uiActionType.CLEAR_ERROR });
   }
@@ -146,7 +146,7 @@ export const userLogin = (userData: UserLoginData, history: any[]) => (dispatch)
 
       dispatch({ type: uiActionType.CLEAR_ERROR });
       dispatch({ type: userActionType.LOADING_USER_OFF });
-      history.push(route.ROOT);
+      history.push(RouteType.ROOT);
     })
     .catch((err) => {
       log(err);

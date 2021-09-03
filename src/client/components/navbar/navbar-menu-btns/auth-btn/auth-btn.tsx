@@ -1,7 +1,7 @@
 import * as React from 'react';
 // Routes
 import { Link } from 'react-router-dom';
-import route from '../../../../utils/routes/routes';
+import { RouteType } from '../../../../utils/routes/routes';
 // MUI Stuff
 import Button from '@material-ui/core/Button';
 // Icons
@@ -19,7 +19,7 @@ const AuthBtn: React.FC<Props> = ({ authenticated }) => {
   if (authenticated) return null;
 
   return (
-    <Link to={route.LOGIN}>
+    <Link to={RouteType.LOGIN}>
       <Button
         sx={{
           p: [1, 3, 1, 3],

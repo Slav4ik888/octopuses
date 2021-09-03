@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setTargetScroll } from '../../../../redux/actions/ui-actions';
 // Routes
 import { Link } from 'react-router-dom';
-import route from '../../../../utils/routes/routes';
+import { RouteType } from '../../../../utils/routes/routes';
 // MUI Stuff
 import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
@@ -38,7 +38,7 @@ const NotificationsMenuItem: React.FC<Props> = ({ notify, setTargetScroll, onClo
 
   return (
     <div onClick={() => handleTaskClick(notify)}>
-      <Link to={`${route.ROOT}/taskId=${notify.taskId}`} >
+      <Link to={`${RouteType.ROOT}/taskId=${notify.taskId}`} >
         <Box 
           sx={{
             display: `flex`,

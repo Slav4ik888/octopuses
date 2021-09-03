@@ -21,5 +21,5 @@ ReactDOM.render(
     </ThemeProvider>
   </Provider>
   , document.getElementById('root'));
-
-// git add . && git commit -m "refact GoodsCards" && git push -u origin master
+ 
+// git add . && git commit -m "fix GoodsCardsFooter" && git push -u origin master

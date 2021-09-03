@@ -29,6 +29,7 @@ const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
       sx={{
         display: `flex`,
         justifyContent: `flex-end`,
+        alignItems: `center`,
       }}
     >
       <Typography
@@ -40,7 +41,6 @@ const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
           borderRadius: `4px`,
           textAlign: `center`,
           padding: `2px 8px`,
-          mt: 1,
         }}
       >
         {

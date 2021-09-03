@@ -2,6 +2,7 @@ import * as React from 'react';
 // Mui Staff
 import Box from '@material-ui/core/Box';
 // Components
+import GoodsPrice from './goods-price/goods-price';
 import GoodsRestInfo from './goods-rest-info/goods-rest-info';
 // Functions
 import logger from '../../../../utils/client-logger/client-logger';
@@ -10,12 +11,13 @@ import logger from '../../../../utils/client-logger/client-logger';
 
 
 type Props = {
+  price: number;
   rest: number;
 }
 
 
 // Подвал карточи товара
-const GoodsCardFooter: React.FC<Props> = ({ rest }) => {
+const GoodsCardFooter: React.FC<Props> = ({ price, rest }) => {
 
 
   return (
@@ -23,9 +25,10 @@ const GoodsCardFooter: React.FC<Props> = ({ rest }) => {
       sx={{
         display: `flex`,
         justifyContent: `space-between`,
+        mt: 1,
       }}
     >
-      <GoodsPrice />
+      <GoodsPrice price={price} />
       <GoodsRestInfo rest={rest} />
     </Box>
   );

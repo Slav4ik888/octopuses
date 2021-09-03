@@ -36,9 +36,18 @@ const GoodsCard: React.FC<Props> = ({ goods }) => {
         backgroundColor: `white`,
       }}
     >
-      <GoodsCardHeader label={goods.label} />
-      <GoodsCardBody images={goods.images} />
-      <GoodsCardFooter rest={goods.rest} />
+      <GoodsCardHeader
+        label={goods.label}
+      />
+      
+      <GoodsCardBody
+        images={goods.images}
+      />
+
+      <GoodsCardFooter
+        price={goods.price}
+        rest={goods.rest}
+      />
     </Paper>
   );
 };

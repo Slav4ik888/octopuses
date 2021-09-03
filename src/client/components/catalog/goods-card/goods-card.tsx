@@ -1,15 +1,10 @@
 import * as React from 'react';
-// Redux Stuff
-import { connect } from 'react-redux';
-// import { updateOneTask} from '../../redux/actions/data-actions';
-import { getUserId } from '../../../redux/selectors/user-selectors';
-import { State } from '../../../redux/redux-types';
 // MUI Stuff
 import Paper from '@material-ui/core/Paper';
 // Components
-import GoodsLabel from '../goods-label/goods-label';
-import GoodsImages from '../goods-images/goods-images';
-import GoodsRestInfo from '../goods-rest-info/goods-rest-info';
+import GoodsCardHeader from './header/goods-card-header';
+import GoodsCardBody from './body/goods-card-body';
+import GoodsCardFooter from './footer/goods-card-footer';
 // Functions
 import logger from '../../../utils/client-logger/client-logger';
 // Types
@@ -25,7 +20,7 @@ type Props = {
 
 // Страница для каталога товаров
 const GoodsCard: React.FC<Props> = ({ goods }) => {
-  log(`Goods: `, goods);
+  // log(`Goods: `, goods);
 
   return (
     <Paper
@@ -41,17 +36,11 @@ const GoodsCard: React.FC<Props> = ({ goods }) => {
         backgroundColor: `white`,
       }}
     >
-      <GoodsLabel label={goods.label} />
-      <GoodsImages images={goods.images} />
-      <GoodsRestInfo rest={goods.rest} />
+      <GoodsCardHeader label={goods.label} />
+      <GoodsCardBody images={goods.images} />
+      <GoodsCardFooter rest={goods.rest} />
     </Paper>
   );
 };
 
-const mapStateToProps = (state: State) => ({
-});
-
-const mapActionsToProps = {
-};
-
-export default connect(mapStateToProps, mapActionsToProps)(GoodsCard);
+export default GoodsCard;

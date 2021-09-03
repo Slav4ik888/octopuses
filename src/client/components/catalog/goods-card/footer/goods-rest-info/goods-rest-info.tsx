@@ -4,9 +4,9 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 // Components
 // Functions
-import logger from '../../../utils/client-logger/client-logger';
+import logger from '../../../../../utils/client-logger/client-logger';
 // Types
-import themes from '../../../utils/themes/themes';
+import themes from '../../../../../utils/themes/themes';
 import { Box } from '@material-ui/core';
 
 

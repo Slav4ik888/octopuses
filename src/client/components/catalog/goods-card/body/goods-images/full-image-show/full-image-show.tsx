@@ -2,11 +2,11 @@ import * as React from 'react';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
 // Components
-import DialogInfo from '../../dialogs/dialog-info/dialog-info';
+import DialogInfo from '../../../../../dialogs/dialog-info/dialog-info';
 // Functions
-import { getImagePath } from '../../../utils/path/path';
+import { getImagePath } from '../../../../../../utils/path/path';
 // Types
-import { GoodsImage } from '../../../../types/catalog';
+import { GoodsImage } from '../../../../../../../types/catalog';
 
 
 type Props = {

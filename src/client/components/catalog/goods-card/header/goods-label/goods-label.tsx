@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 // Components
 // Functions
-import logger from '../../../utils/client-logger/client-logger';
+import logger from '../../../../../utils/client-logger/client-logger';
 // Types
 
 const log = logger(`[GoodsLabel]`);

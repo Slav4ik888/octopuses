@@ -1,6 +1,6 @@
 import * as React from 'react';
 // MUI Stuff
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '@mui/material/IconButton';
 // Icons
 import AccountCircle from '@material-ui/icons/AccountCircle';
 // Components

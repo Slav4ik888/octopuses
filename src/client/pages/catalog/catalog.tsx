@@ -1,24 +1,16 @@
 import * as React from 'react';
 // Components
 import PageWrap from '../page-wrap/page-wrap';
+import CatalogSelectPanel from '../../components/catalog/catalog-select-panel/catalog-select-panel';
 import CatalogList from '../../components/catalog/catalog-list/catalog-list';
-// Types
-import themes from '../../utils/themes/themes';
 
-type Props = {
-  
-}
 
 // Страница для каталога товаров
-const Catalog: React.FC<Props> = ({  }) => {
-
-
-  return (
-    <PageWrap>
-      <CatalogList />
-    </PageWrap>
-  );
-};
-
+const Catalog: React.FC = () => (
+  <PageWrap column>
+    <CatalogSelectPanel />
+    <CatalogList />
+  </PageWrap>
+);
 
 export default Catalog;

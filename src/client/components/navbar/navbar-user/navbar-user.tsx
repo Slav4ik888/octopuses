@@ -1,15 +1,8 @@
 import * as React from 'react';
-import cl from 'classnames';
-// Routes
-import { Link, Redirect } from 'react-router-dom';
-import { RouteType } from '../../../utils/routes/routes';
 // Redux Stuff
 import { connect } from 'react-redux';
 import { State } from '../../../redux/redux-types';
 import * as u from '../../../redux/selectors/user-selectors';
-// MUI Stuff
-import Button from '@material-ui/core/Button';
-// Components
 // Functions
 import logger from '../../../utils/client-logger/client-logger';
 // Types & Consts

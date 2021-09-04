@@ -1,19 +1,12 @@
 import * as React from 'react';
 // MUI Stuff
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-// Components
-// Functions
-import logger from '../../../../../utils/client-logger/client-logger';
-// Types
-
-const log = logger(`[GoodsLabel]`);
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 
 
 type Props = {
   label: string;
-}
-
+};
 
 // Заголовок товара
 const GoodsLabel: React.FC<Props> = ({ label }) => {

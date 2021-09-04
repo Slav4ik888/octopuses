@@ -67,7 +67,7 @@ export const adapterGoogleData = (data) => {
   if (!data) return;
   let goods = [];
 
-  // Находим и сохраняем индексы интересующих нас полей
+  // Находим и сохраняем индексы имеющихся полей
   const indexes = getIndexes(data[0]);
 
   // Пропускаем 2 строки и с оставшихся строк создаём массив товаров

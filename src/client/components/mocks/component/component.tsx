@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { getUserId } from '../../../redux/selectors/user-selectors';
 import { State } from '../../../redux/redux-types';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import Collapse from '@material-ui/core/Collapse';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
+import Collapse from '@mui/material/Collapse';
 // Components
 // Functions
 // Types

@@ -7,10 +7,11 @@ export enum GoodsVariety {
 
 // Для кого
 export enum GoodsType {
+  ALL = `Все`,
   MAN = `Мужские`,
   WOMAN = `Женские`,
   KIDS = `Детские`,
-  ANY = `Универсальные`
+  ANY = `Универсальные`,
 };
 
 
@@ -31,7 +32,7 @@ export interface Goods {
   rest: number,                // Остаток на складе
   images: Array<GoodsImage>,   // Картинки товара
   variety: GoodsVariety,       // Разновидность товара
-  types: Array<GoodsType>,     // Types of goods to which the goods belon
+  types: GoodsType,     // Types of goods to which the goods belon
   price: number,               // Цена без скидки
   discount: number,            // Скидка в %
   discountPrice: number,       // Цена со скидкой

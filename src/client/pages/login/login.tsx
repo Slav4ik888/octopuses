@@ -6,15 +6,15 @@ import { setErrors } from '../../redux/actions/ui-actions';
 import { getErrors } from '../../redux/selectors/ui-selectors';
 import { State } from '../../redux/redux-types';
 // MUI Stuff 
-import Avatar from '@material-ui/core/Avatar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 // Components
 import ActionMain from '../../components/auth/action-container/action-main/action-main';
 import ActionHelps from '../../components/auth/action-container/action-helps/action-helps';

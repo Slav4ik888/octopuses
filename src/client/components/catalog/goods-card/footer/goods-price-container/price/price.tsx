@@ -1,8 +1,9 @@
 import * as React from 'react';
 // MUI Stuff
-import Typography from '@material-ui/core/Typography';
+import Typography from '@mui/material/Typography';
 // Consts
 import themes from '../../../../../../utils/themes/themes';
+
 
 type PriceProps = {
   price: string;
@@ -11,6 +12,7 @@ type PriceProps = {
 
 const Price: React.FC<PriceProps> = ({ price, crossOut }) => {
   if (!price) return null;
+  
   return (
     <Typography
       sx={{

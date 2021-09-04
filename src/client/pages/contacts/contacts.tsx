@@ -1,7 +1,7 @@
 import * as React from 'react';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 // Components
 import PageWrap from '../page-wrap/page-wrap';
 // Types

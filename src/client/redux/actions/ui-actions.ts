@@ -79,3 +79,9 @@ export const setTargetScroll = (data: string) => (dispatch: Dispatch) => dispatc
   type: uiActionType.SET_TARGET_SCROLL,
   payload: data
 });
+
+// 
+export const setSelectedGoodsType = (label: string) => (dispatch: Dispatch) => dispatch({
+  type: uiActionType.SET_SELECTED_GOODSTYPE,
+  payload: label
+});

@@ -6,8 +6,8 @@ import { setTargetScroll } from '../../../../redux/actions/ui-actions';
 import { Link } from 'react-router-dom';
 import { RouteType } from '../../../../utils/routes/routes';
 // MUI Stuff
-import Tooltip from '@material-ui/core/Tooltip';
-import Box from '@material-ui/core/Box';
+import Tooltip from '@mui/material/Tooltip';
+import Box from '@mui/material/Box';
 // Components
 // import TaskStatusBtn from '../../../buttons/task-status-btn/task-status-btn';
 // Functions

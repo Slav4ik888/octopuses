@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import { userLogout } from '../../../../redux/actions/user-actions';
 import { getAuthenticated, getUserRole } from '../../../../redux/selectors/user-selectors';
 // MUI Stuff
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Divider from '@material-ui/core/Divider';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import Divider from '@mui/material/Divider';
 // Icons
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 import HomeIcon from '@material-ui/icons/Home';

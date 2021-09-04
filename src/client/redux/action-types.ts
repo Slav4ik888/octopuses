@@ -20,6 +20,7 @@ export enum uiActionType {
   CLEAR_MESSAGE = `CLEAR_MESSAGE`,
 
   SET_TARGET_SCROLL = `SET_TARGET_SCROLL`,
+  SET_SELECTED_GOODSTYPE = `SET_SELECTED_GOODSTYPE`,
 };
 
 // Data reducer types

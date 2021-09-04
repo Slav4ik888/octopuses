@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { State } from '../../../redux/redux-types';
 import * as u from '../../../redux/selectors/user-selectors';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 // Components
 import PhoneBtn from '../btn/phone/phone';
 // Functions

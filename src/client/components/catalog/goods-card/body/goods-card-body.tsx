@@ -1,7 +1,7 @@
 import * as React from 'react';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
-import Badge from '@material-ui/core/Badge';
+import Box from '@mui/material/Box';
+import Badge from '@mui/material/Badge';
 // Components
 import GoodsImages from './goods-images/goods-images';
 // Types

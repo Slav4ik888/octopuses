@@ -3,6 +3,7 @@ import { extend } from '../../../../utils/objects/objects/objects.js';
 import { getScreenFormats } from '../../../utils/screens/screens.js';
 // Types
 import { uiActionType } from '../../action-types.ts';
+import { GoodsType } from '../../../../types/catalog.ts';
 // import { StateUI } from '../redux-types'
 
 
@@ -10,6 +11,7 @@ const initialState = {
   loading: false,
   acceptedCookie: false, // Разрешение user use cookie
   screenFormats: {},     // Сurrent screen length
+  selectedGoodsType: GoodsType.ALL,
   message: {},           // Current message for display
   // {
   //   type: ``,
@@ -79,6 +81,10 @@ export default function (state = initialState, action) {
         loading: false,
         message: {},
       });
+    
+    
+    case uiActionType.SET_SELECTED_GOODSTYPE:
+      return extend(state, { selectedGoodsType: action.payload });
     
     default: return state;
   }

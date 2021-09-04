@@ -1,7 +1,7 @@
 import * as React from 'react';
 // MUI Stuff
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
 // Icons
 import EmailIcon from '@material-ui/icons/EmailRounded';
 import PhoneIcon from '@material-ui/icons/Phone';

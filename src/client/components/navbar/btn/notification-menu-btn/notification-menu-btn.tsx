@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { getIsRoleSuper, getUserId } from '../../../../redux/selectors/user-selectors';
 import { State } from '../../../../redux/redux-types';
 // MUI Stuff
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import Tooltip from '@mui/material/Tooltip';
 // Icons
 import NotificationsIcon from '@material-ui/icons/Notifications';
 // Components

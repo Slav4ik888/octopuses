@@ -1,25 +1,12 @@
 import * as React from 'react';
 // MUI Stuff
-import Button from '@material-ui/core/Button';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogActions from '@material-ui/core/DialogActions';
+import Button from '@mui/material/Button';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogActions from '@mui/material/DialogActions';
 // Components
 import DialogInfo from '../dialog-info/dialog-info';
 // Types
 import { ConfirmType } from '../../../../types/btn';
-
-
-  // dialog: {
-  //   padding: theme.spacing(4),
-    
-  //   [theme.breakpoints.down(`xs`)]: {
-  //     '& .MuiPaper-root': {
-  //       margin: 0
-  //     },
-  //     padding: 0
-  //   }
-  // },
-
 
 
 type Props = {

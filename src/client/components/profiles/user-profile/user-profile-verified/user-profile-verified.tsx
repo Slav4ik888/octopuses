@@ -5,12 +5,12 @@ import 'dayjs/locale/ru';
 import { connect } from 'react-redux';
 import { State } from '../../../../redux/redux-types';
 // MUI Stuff
-import TextField from '@material-ui/core/TextField';
-import DialogContent from '@material-ui/core/DialogContent';
-import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Box from '@material-ui/core/Box';
+import TextField from '@mui/material/TextField';
+import DialogContent from '@mui/material/DialogContent';
+import Tooltip from '@mui/material/Tooltip';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box';
 // Component
 import DangerBlock from './danger-block/danger-block';
 import ListSelect from '../../../lists/list-select/list-select';

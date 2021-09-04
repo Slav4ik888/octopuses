@@ -1,6 +1,6 @@
 import * as React from 'react';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 // Icons
 import IconNoImage from '../../../../../icons/icon-no-image';
 // Components
@@ -20,7 +20,6 @@ type Props = {
 const GoodsImages: React.FC<Props> = ({ images }) => {
 
   const [selected, setSelected] = React.useState(images[0]);
-  console.log('selected: ', selected.url_sm);
   
   const [fullImage, setFullImage] = React.useState(false);
   const handleFullImageOpen = () => setFullImage(true);

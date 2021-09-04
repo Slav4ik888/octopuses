@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { getUnreadedComments } from '../../../../redux/selectors/data-selectors';
 import { getUserId } from '../../../../redux/selectors/user-selectors';
 // MUI Stuff
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Tooltip from '@material-ui/core/Tooltip';       
+import IconButton from '@mui/material/IconButton';
+import Badge from '@mui/material/Badge';
+import Tooltip from '@mui/material/Tooltip';       
 // Icons
 import CommentIcon from '@material-ui/icons/Chat';
 // Components

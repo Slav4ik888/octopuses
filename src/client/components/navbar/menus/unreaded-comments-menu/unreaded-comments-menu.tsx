@@ -6,11 +6,11 @@ import { setTargetScroll } from '../../../../redux/actions/ui-actions';
 import { Link } from 'react-router-dom';
 import { RouteType } from '../../../../utils/routes/routes';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
 // Functions
 import { createListPanelId } from '../../utils/create-list-panel-id';
 // Types

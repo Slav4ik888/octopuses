@@ -22,5 +22,5 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root'));
  
-  
-// git add . && git commit -m "add discount price & badge" && git push -u origin master
+  `AIzaSyAnnrOVC-l5QKGcAC7pt_e8jSImoYVDdxw`; // 
+// git add . && git commit -m "add CatalogPanel" && git push -u origin master

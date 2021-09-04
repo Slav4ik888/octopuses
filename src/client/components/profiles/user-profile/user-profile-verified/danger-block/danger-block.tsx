@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { updateUserProfile, deleteUser } from '../../../../../redux/actions/user-actions';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 // Component
 import DeleteButton from '../../../../buttons/delete-button/delete-button';
 // Types

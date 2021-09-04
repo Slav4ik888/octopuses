@@ -1,19 +1,21 @@
 import * as React from 'react';
 // MUI Stuff
-import Box from '@material-ui/core/Box';
+import Box from '@mui/material/Box';
 // Types
 import themes from '../../utils/themes/themes';
 
 type Props = {
-  children: JSX.Element | Node,
+  children: Array<JSX.Element> | JSX.Element | Node;
+  column?: boolean;
 }
 
 // Шаблон страницы
-const PageWrap: React.FC<Props> = ({ children }) => {
+const PageWrap: React.FC<Props> = ({ children, column }) => {
   return (
     <Box
       sx={{
         display: `flex`,
+        flexDirection: () => column ? `column` : `row`,
         m: `auto`,
         p: { xs: 0, sm: 2 },
         width: `100%`,

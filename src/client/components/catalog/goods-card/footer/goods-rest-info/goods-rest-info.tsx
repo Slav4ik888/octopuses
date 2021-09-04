@@ -1,22 +1,14 @@
 import * as React from 'react';
 // MUI Stuff
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-// Components
-// Functions
-import logger from '../../../../../utils/client-logger/client-logger';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 // Types
 import themes from '../../../../../utils/themes/themes';
-import { Box } from '@material-ui/core';
-
-
-const log = logger(`[GoodsRestInfo]`);
 
 
 type Props = {
   rest: number;
-}
-
+};
 
 // Заголовок товара
 const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
@@ -25,13 +17,7 @@ const GoodsRestInfo: React.FC<Props> = ({ rest }) => {
   const color = React.useMemo(() => rest > 0 ? themes.catalog.goods_card.rest_label.available : themes.catalog.goods_card.rest_label.not_available, [rest]);
 
   return (
-    <Box
-      sx={{
-        display: `flex`,
-        justifyContent: `flex-end`,
-        alignItems: `center`,
-      }}
-    >
+    <Box sx={{ display: `flex`, justifyContent: `flex-end`, alignItems: `center` }} >
       <Typography
         sx={{
           color,

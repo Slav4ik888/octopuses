@@ -6,7 +6,7 @@ import { getLoadingUser, getUserProfile } from '../../../redux/selectors/user-se
 import { setMessage } from '../../../redux/actions/ui-actions';
 import { State } from '../../../redux/redux-types';
 // MUI Stuff
-import DialogActions from '@material-ui/core/DialogActions';
+import DialogActions from '@mui/material/DialogActions';
 // Component
 import DialogInfo from '../../dialogs/dialog-info/dialog-info';
 import UserProfileVerified from './user-profile-verified/user-profile-verified';

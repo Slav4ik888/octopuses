@@ -1,6 +1,6 @@
 import * as React from 'react';
 // MUI Stuff
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 // Components
 // import GreetingOffer from '../../../components/promo/greeting-offer/greeting-offer';
 // import DemoSubscribeOffer from '../../../components/promo/demo-subscribe-offer/demo-subscribe-offer';

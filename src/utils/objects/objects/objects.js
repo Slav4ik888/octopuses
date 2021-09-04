@@ -12,9 +12,9 @@ export const cloneObj = obj => {
 
 
 /**
- * Возвращает массив из obj например role
- * @param {object} obj - role
- * @return {Array}
+ * Возвращает массив значений из obj
+ * @param {object} obj - { admin: 'Admin', ....
+ * @return {Array}  ['Admin', ...]
  */
 export const arrFromObj = (obj) => {
   let arr = [];

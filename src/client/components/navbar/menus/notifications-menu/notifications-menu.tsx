@@ -3,8 +3,8 @@ import cl from 'classnames';
 // Redux Stuff
 import { connect } from 'react-redux';
 // MUI Stuff
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 // Components
 import NotificationsMenuItem from '../notifications-menu-item/notifications-menu-item';
 // Functions

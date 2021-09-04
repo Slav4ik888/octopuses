@@ -3,8 +3,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { clearMessage } from '../../../redux/actions/ui-actions';
 // MUI Stuff
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/core/Alert';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 // Types
 import { Message, MessageType } from '../../../../types/messages';
 

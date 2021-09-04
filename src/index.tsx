@@ -22,5 +22,5 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root'));
  
-  `AIzaSyAnnrOVC-l5QKGcAC7pt_e8jSImoYVDdxw`; // 
-// git add . && git commit -m "add CatalogPanel" && git push -u origin master
+  
+// git add . && git commit -m "fix" && git push -u origin master

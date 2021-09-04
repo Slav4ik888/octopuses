@@ -1,0 +1,1 @@
+export function getThousandAndRest(value: number): { thousand: number, rest: string };

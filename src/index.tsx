@@ -22,4 +22,5 @@ ReactDOM.render(
   </Provider>
   , document.getElementById('root'));
  
-// git add . && git commit -m "fix GoodsCardsFooter" && git push -u origin master
+  
+// git add . && git commit -m "add discount price & badge" && git push -u origin master

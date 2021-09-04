@@ -11,12 +11,22 @@ export default {
   
   catalog: {
     goods_card: {
+      prices: {
+        price: `#4e4e4e`,
+        crossOut: `#a7a7a7`,
+      },
       rest_label: {
         available: `#01ad17`,
         not_available: `#9a9a9a`, // `#f98282` pink, // ee709d коралловый
         background: `#f3f3f3`,
-      }
-    }
+      },
+      discount: {
+        badges: {
+          background: `#ff0400`,
+          color: `#fff`,
+        },
+      },
+    },
   },
 
   dialog: {

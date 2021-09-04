@@ -1,6 +1,8 @@
 import * as React from 'react';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
+// Icons
+import IconNoImage from '../../../../../icons/icon-no-image';
 // Components
 import FullImageShow from './full-image-show/full-image-show';
 // Functions
@@ -18,7 +20,8 @@ type Props = {
 const GoodsImages: React.FC<Props> = ({ images }) => {
 
   const [selected, setSelected] = React.useState(images[0]);
-
+  console.log('selected: ', selected.url_sm);
+  
   const [fullImage, setFullImage] = React.useState(false);
   const handleFullImageOpen = () => setFullImage(true);
   const handleFullImageClose = () => setFullImage(false);
@@ -32,9 +35,14 @@ const GoodsImages: React.FC<Props> = ({ images }) => {
           overflowY: `hidden`,
           height: `120px`,
           cursor: `pointer`,
+          width: `100%`,
         }}
       >
-        <img src={getImagePath(selected.url_sm)} alt={selected.label} style={{ width: `100%` }} />
+        {
+          selected.url_sm
+            ? <img src={getImagePath(selected.url_sm)} alt={selected.label} style={{ width: `100%` }} />
+            : <IconNoImage />
+        }
       </Box>
 
       <FullImageShow

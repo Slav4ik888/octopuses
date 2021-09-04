@@ -1,6 +1,8 @@
 import * as React from 'react';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
+// Icons
+import IconNoImage from '../../../../../../icons/icon-no-image';
 // Components
 import DialogInfo from '../../../../../dialogs/dialog-info/dialog-info';
 // Functions
@@ -31,8 +33,13 @@ const FullImageShow: React.FC<Props> = ({ open, item, onClose }) => {
       borderRadius: `13px`,
       backgroundColor: `#fff`,
       boxShadow: `1px 1px 7px #c1e3f5`,
-    }}>
-    <img src={getImagePath(item.url)} alt={item.label} style={{ width: `100%` }} />
+    }}
+  >
+    {
+      item.url
+        ? <img src={getImagePath(item.url)} alt={item.label} style={{ width: `100%` }} />
+        : <IconNoImage width={`100%`} height={`100%`} />
+    }
   </Box>);
 
 

@@ -66,11 +66,13 @@ const DialogTitle: React.FC<Props> = (props: Props) => {
         alignItems: `center`,
         justifyContent: `space-between`,
         m: 0,
-        pl: { xs: 1, sm: 4 },
+        pt: { xs: 0, sm: 2 },
         pr: { xs: 1, sm: 2 },
+        pb: { xs: 0, sm: 2 },
+        pl: { xs: 1, sm: 4 },
         color: `primary.contrastText`, // theme.palette.primary.contrastText
         backgroundColor: `primary.main`,// theme.palette.primary.main,
-        minHeight: `62px`,
+        minHeight: { sm: `62px` },
       }}
       {...other}
     >

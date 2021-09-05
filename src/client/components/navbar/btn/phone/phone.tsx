@@ -11,12 +11,7 @@ import themes from '../../../../utils/themes/themes';
 
 const PhoneBtn: React.FC = () => {
   return (
-    <Box
-      sx={{
-        display: `flex`,
-        alignItems: `center`,
-      }}
-    >
+    <Box sx={{ display: `flex`, alignItems: `center`, margin: { xs: `16px 0 8px 0` } }}>
       <Link
         href="tel:+79041327888"
         sx={{

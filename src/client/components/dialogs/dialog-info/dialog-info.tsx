@@ -12,7 +12,7 @@ type Props = {
   open: boolean;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
   fullWidth?: boolean;
-  title: string;
+  title?: string;
   question?: string;
   classname?: string;
   children: JSX.Element | any;

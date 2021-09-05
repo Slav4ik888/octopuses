@@ -23,15 +23,17 @@ const Contacts: React.FC<Props> = ({  }) => {
         elevation={0}
         variant="elevation"
         sx={{
+          width: `100%`,
+          maxWidth: `960px`,
+          p: 4,
           display: `flex`,
-          flexDirection: `column`,
           alignItems: `center`,
-          justifyContent: `center`,
+          justifyContent: `center`
         }}
       >
-        {
-          body
-        }
+        <Box>
+          {body}
+        </Box>
       </Paper>
     </PageWrap>
   );

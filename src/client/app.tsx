@@ -17,7 +17,7 @@ import Contacts from './pages/contacts/contacts';
 // import Policy from './pages/policy/policy';
 
 // Components
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/navbar/';
 import MessageBar from './components/dialogs/message-bar/message-bar';
 // import Footer from './components/footer/footer';
 // import AcceptCookie from './components/auth/accept-cookie/accept-cookie';

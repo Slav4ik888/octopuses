@@ -9,7 +9,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const outputDirectory = process.env.NODE_ENV === `development` ? 'dist' : 'public';
+const outputDirectory = 'public' // 'dist';
 
 
 export default {

@@ -49,11 +49,11 @@ const NavbarNoUser: React.FC<Props> = ({ loadingUser, authenticated, screenForma
     >
       <Box sx={{flexGrow: 1}} />
 
-      <Button variant="text" color="secondary" onClick={onClose} sx={{ margin: { xs: `16px 0 8px 0` } }}>
+      {/* <Button variant="text" color="secondary" onClick={onClose} sx={{ margin: { xs: `16px 0 8px 0` } }}>
         <Link to={RouteType.CATALOG}>
           Каталог
         </Link>
-      </Button>
+      </Button> */}
       
       {/* <Button variant="text" color="secondary" onClick={onClose} sx={{ margin: { xs: `16px 0 8px 0` } }}>
         <Link to={RouteType.DIAGNOSTICS}>

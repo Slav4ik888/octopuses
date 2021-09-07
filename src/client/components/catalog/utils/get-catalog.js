@@ -1,6 +1,6 @@
 // Redux
 import store from '../../../redux/store.js';
-import { dataActionType } from '../../../redux/action-types.ts';
+import { dataActionType, uiActionType } from '../../../redux/action-types.ts';
 // Functions
 import clientLogger from '../../../utils/client-logger/client-logger.js';
 import { setStorageData, getStorageData } from '../../../utils/data/local-storage.js';
@@ -15,11 +15,11 @@ const log = clientLogger(`getCatalog`);
 ;
 export default async function getCatalog() {
   if (isMaxFrequencyEnd(getStorageData(`Oct_LastGetGoogle`))) {
-    // console.log('process.env.KEY: ', process.env.KEY);
-
-    const key = process.env.KEY; //
+    const key = process.env.KEY;
     const identificator = `AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt`;
     const URL = `https://script.google.com/macros/s/${identificator}/exec?key=${key}`;
+
+    store.dispatch({ type: uiActionType.LOADING_UI });
 
     const res = await getFromGoogleData(URL);
     log('Загрузили из Гугл: ', res);
@@ -31,6 +31,8 @@ export default async function getCatalog() {
       type: dataActionType.SET_CATALOG,
       payload: adapterGoogleData(res)
     });
+    store.dispatch({ type: uiActionType.LOADING_UI_OFF });
+
   }
   else {
     const DB = getStorageData(`Oct_DBFromGoogle`);

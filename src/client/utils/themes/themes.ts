@@ -1,4 +1,19 @@
 export default {
+  palette: {
+    primary: {
+      light: `#ffffff`, 
+      main: `#e1f5fe`,
+      dark: `#afc2cb`,
+      contrastText: `#000000`,
+    },
+    secondary: {
+      light: `#9ee4ff`,
+      main: `#6ab2dd`,
+      dark: `#3383ab`,
+      contrastText: `#ffffff`,
+    },
+  },
+
   header: {
     color: `#007d94`,
     background: `#e1f5fe`,
@@ -42,6 +57,10 @@ export default {
     linkNoAuth: {
       color: `#b3b3b3`,
     },
+    background: `#e1f5fe`,
+    copyright: {
+      color: `#769da9`,
+    }
   },
 
   badges: {

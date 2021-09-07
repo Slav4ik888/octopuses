@@ -19,7 +19,7 @@ import Contacts from './pages/contacts/contacts';
 // Components
 import Navbar from './components/navbar/navbar/';
 import MessageBar from './components/dialogs/message-bar/message-bar';
-// import Footer from './components/footer/footer';
+import Footer from './components/footer';
 // import AcceptCookie from './components/auth/accept-cookie/accept-cookie';
 
 // Functions
@@ -52,7 +52,6 @@ const App = () => {
           <MessageBar />
         
           <Switch>
-            <Route exact path={RouteType.ROOT} component={Root} />
             <Route exact path={RouteType.CATALOG} component={Catalog} />
             <Route exact path={RouteType.APPOINTMENT} component={Appointment} />
             <Route exact path={RouteType.DIAGNOSTICS} component={Diagnostics} />
@@ -71,6 +70,7 @@ const App = () => {
             
             
             {/* <Route exact path={RouteType.POLICY} component={Policy} /> */}
+            <Route exact path={RouteType.ROOT} component={Catalog} />
 
             <Route
               render={() => (
@@ -88,7 +88,7 @@ const App = () => {
         </main>
         
         <footer className="page-footer">
-          {/* <Footer /> */}
+          <Footer />
         </footer>
 
       </Router>

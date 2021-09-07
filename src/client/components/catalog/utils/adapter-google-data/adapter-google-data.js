@@ -61,6 +61,10 @@ const createOneGoods = (item, ids) => ({
 });
 
 
+import logger from '../../../../utils/client-logger/client-logger.js';
+const log = logger(`adapterGoogleData`);
+
+
 // Адаптирует данные полученные с Гугл таблицы, 
 // под тот формат, что будет использоваться для каталога
 export const adapterGoogleData = (data) => {
@@ -72,7 +76,7 @@ export const adapterGoogleData = (data) => {
 
   // Пропускаем 2 строки и с оставшихся строк создаём массив товаров
   for (let i = 2; i < data.length; i++) goods.push(createOneGoods(data[i], indexes))
-  console.log('goods: ', goods);
+  log('goods: ', goods);
 
   return goods;
 };

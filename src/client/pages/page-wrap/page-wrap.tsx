@@ -16,7 +16,7 @@ const PageWrap: React.FC<Props> = ({ children, column }) => {
       sx={{
         display: `flex`,
         flexDirection: () => column ? `column` : `row`,
-        justifyContent: `center`,
+        justifyContent: `flex-start`,
         m: `auto`,
         p: { xs: 0, sm: 2 },
         width: `100%`,

@@ -8,7 +8,7 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 // Components
-import CircularProgress from '../../../buttons/circular-progress/circular-progress';
+import CircularProgress from '../../../buttons/circular-progress';
 // Types
 import { Errors } from '../../../../../types/results';
 import { ToggleLoginSignup } from '../../../../../types/user';

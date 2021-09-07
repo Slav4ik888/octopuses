@@ -9,7 +9,7 @@ import Box from '@material-ui/core/Box';
 import ReactMarkdown = require('react-markdown');
 import gfm = require('remark-gfm');
 // Components
-import CircularProgress from '../../../buttons/circular-progress/circular-progress';
+import CircularProgress from '../../../buttons/circular-progress';
 // Types
 import { State } from '../../../../redux/redux-types';
 

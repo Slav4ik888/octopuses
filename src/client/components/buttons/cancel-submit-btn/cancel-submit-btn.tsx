@@ -1,7 +1,7 @@
 import * as React from 'react';
 // MUI Stuff
 import Button from '@material-ui/core/Button';
-import CircularProgress from '../circular-progress/circular-progress';
+import CircularProgress from '../circular-progress';
 
 
 type Props = {

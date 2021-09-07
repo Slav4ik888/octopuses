@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -68,20 +69,21 @@ export default {
   resolve: {
     extensions: [`*`, `.js`, `.jsx`, `.json`, `.css`, `.ts`, `.tsx`]
   },
-  // devServer: {
-  //   port: 3000,
-  //   open: true,
-  //   historyApiFallback: true,
-  //   proxy: {
-  //     '/api': 'http://localhost:8080'
-  //   }
-  // },
+  devServer: {
+    port: 3000,
+    open: true,
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:8080'
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: `Осьминожки - товары для здоровья`,
       template: './public/index.html',
       favicon: './public/img/favicon.png'
-    })
+    }),
+    new Dotenv()
   ]
 }

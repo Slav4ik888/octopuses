@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 // Components
 import DialogInfo from '../../../../../dialogs/dialog-info/dialog-info';
-import CircularProgress from '../../../../../buttons/circular-progress/circular-progress';
+import CircularProgress from '../../../../../buttons/circular-progress';
 // Types
 import { Errors } from '../../../../../../../types/results';
 

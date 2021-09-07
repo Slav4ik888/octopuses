@@ -9,7 +9,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const outputDirectory = 'public'; //'dist';
+const outputDirectory = 'dist';
 
 
 export default {

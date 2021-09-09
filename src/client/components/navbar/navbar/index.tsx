@@ -16,7 +16,10 @@ import themes from '../../../utils/themes/themes';
 const Navbar: React.FC = () => {
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      component="header"
+      sx={{ flexShrink: 0, flexGrow: 1, zIndex: 100 }}
+    >
       <AppBar
         position="static"
         sx={{

@@ -16,7 +16,10 @@ import themes from '../../utils/themes/themes';
 const Footer: React.FC = () => {
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      component="footer"
+      sx={{ flexShrink: 0, flexGrow: 1, zIndex: 100 }}
+    >
       <AppBar
         position="static"
         sx={{

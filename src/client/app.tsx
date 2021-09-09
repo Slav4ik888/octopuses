@@ -6,6 +6,8 @@ import AuthRoute from './utils/routes/auth-route';
 import PrivateRoute from './utils/routes/private-route';
 import AdminRoute from './utils/routes/admin-route';
 import { RouteType } from './utils/routes/routes';
+// MUI
+import Box from '@mui/material/Box';
 // Pages
 import Root from './pages/root/root';
 import Login from './pages/login/login';
@@ -43,12 +45,11 @@ const App = () => {
   return (
     <div className="wrapper">
       <Router history={history}>
-        <header className="page-header">
-          <Navbar />
-        </header>
+        <Navbar />
+
         {/* <AcceptCookie /> */}
 
-        <main className="page-body">
+        <Box component="main" sx={{ flexGrow: 1, minHeight: `calc(100vh - 65px)` }}>
           <MessageBar />
         
           <Switch>
@@ -85,12 +86,9 @@ const App = () => {
               )}
             />
           </Switch>
-        </main>
+        </Box>
         
-        <footer className="page-footer">
-          <Footer />
-        </footer>
-
+        <Footer />
       </Router>
     </div>
   )

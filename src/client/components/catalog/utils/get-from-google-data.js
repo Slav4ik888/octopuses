@@ -7,7 +7,7 @@ import axios from 'axios';
  * @return {array} arr  
  */
 
-export const getFromGoogleData = async (url) => {
+export async function getFromGoogleData(url) {
   const response = await axios.get(url);
   return response.data;
 };

@@ -30,16 +30,16 @@ section {
   flex-direction: column;
 }
 
-.page-header,
+/* .page-header,
 .page-footer {
   flex-shrink: 0;
   z-index: 100;
-}
+} */
 
-.page-body {
+/* .page-body {
   flex-grow: 1;
   min-height: calc(100vh - 65px);
-}
+} */
 
 a,
 button {

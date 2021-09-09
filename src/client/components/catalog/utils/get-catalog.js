@@ -21,18 +21,22 @@ export default async function getCatalog() {
 
     store.dispatch({ type: uiActionType.LOADING_UI });
 
-    const res = await getFromGoogleData(URL);
-    log('Загрузили из Гугл: ', res);
+    try {
+      const res = await getFromGoogleData(URL);
+      log('Загрузили из Гугл: ', res);
   
-    // Сохраняем и в local & store
-    setStorageData(`Oct_LastGetGoogle`, new Date());
-    setStorageData(`Oct_DBFromGoogle`, res);
-    store.dispatch({
-      type: dataActionType.SET_CATALOG,
-      payload: adapterGoogleData(res)
-    });
-    store.dispatch({ type: uiActionType.LOADING_UI_OFF });
-
+      // Сохраняем и в local & store
+      setStorageData(`Oct_LastGetGoogle`, new Date());
+      setStorageData(`Oct_DBFromGoogle`, res);
+      store.dispatch({
+        type: dataActionType.SET_CATALOG,
+        payload: adapterGoogleData(res)
+      });
+      store.dispatch({ type: uiActionType.LOADING_UI_OFF });
+    }
+    catch (e) {
+      store.dispatch({ type: uiActionType.LOADING_UI_OFF });
+    }
   }
   else {
     const DB = getStorageData(`Oct_DBFromGoogle`);

@@ -18,6 +18,7 @@ const isProd = !isDev;
 
 const devtool = () => isDev ? 'source-map' : false;
 const mode = isProd ? 'production' : 'development';
+const target = isProd ? `browserslist` : `web`;
 
 
 
@@ -45,6 +46,7 @@ export default {
   },
   devtool: devtool(),
   mode,
+  target,
 
   plugins: [
     // new CleanWebpackPlugin(),
@@ -60,7 +62,7 @@ export default {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js?x)$/,
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`,
@@ -82,7 +84,10 @@ export default {
       {
         test: /\.s[ac]ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: `` }
+          },
           {
             loader: `style-loader`
           },
@@ -95,7 +100,7 @@ export default {
         ]
       },
       {
-        test: /\.(jp(e*)g|png|gif)$/i,
+        test: /\.(jpe?g|png|gif|svg)$/i,
         type: 'asset/resource',
       },
       {

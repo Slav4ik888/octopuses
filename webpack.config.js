@@ -28,8 +28,9 @@ export default {
   },
 
   output: {
-    path: path.join(__dirname, outputDirectory),
+    path: path.resolve(__dirname, outputDirectory),
     filename: `bundle.js`,
+    assetModuleFilename: `img/[hash][ext][query]`
   },
   
   resolve: {
@@ -49,7 +50,7 @@ export default {
   target,
 
   plugins: [
-    // new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: `Осьминожки - товары для здоровья`,
       template: './public/index.html',
@@ -100,8 +101,13 @@ export default {
         ]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset/resource',
+        test: /\.(jpe?g|png|gif)$/i,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 30 * 1024
+          }
+        }
       },
       {
         test: /\.svg$/,

@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import Dotenv from 'dotenv-webpack';
 
 import path from 'path';
@@ -13,11 +14,11 @@ const outputDirectory = 'dist';
 
 
 const isDev = process.env.NODE_ENV === 'development';
-console.log('isDev: ', isDev);
 const isProd = !isDev;
-console.log('isProd: ', isProd);
 
 const devtool = () => isDev ? 'source-map' : false;
+const mode = isProd ? 'production' : 'development';
+
 
 
 export default {
@@ -42,16 +43,17 @@ export default {
       '/api': 'http://localhost:8080'
     }
   },
-  // devtool: devtool(),
-  // mode: isProd ? 'production' : 'development',
+  devtool: devtool(),
+  mode,
 
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: `Осьминожки - товары для здоровья`,
       template: './public/index.html',
       favicon: './public/img/favicon.png'
     }),
+    new MiniCssExtractPlugin(),
     new Dotenv()
   ],
 
@@ -62,11 +64,11 @@ export default {
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`,
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
+          // options: {
+          //   presets: [
+          //     ['@babel/preset-env', { targets: "defaults" }]
+          //   ]
+          // }
         },
       },
       {
@@ -80,6 +82,7 @@ export default {
       {
         test: /\.s[ac]ss$/,
         use: [
+          MiniCssExtractPlugin.loader,
           {
             loader: `style-loader`
           },

@@ -22,4 +22,4 @@ ReactDOM.render(
   , document.getElementById('root'));
  
   
-// git add . && git commit -m "fix9 webpack.config" && git push -u origin master
+// git add . && git commit -m "fix10 webpack.config" && git push -u origin master

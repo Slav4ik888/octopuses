@@ -6,7 +6,7 @@ import IconNoImage from '../../../../../icons/icon-no-image';
 // Components
 import FullImageShow from './full-image-show/full-image-show';
 // Functions
-import { getImagePath } from '../../../../../utils/path/path';
+import { getGoodsPath } from '../../../../../utils/path/path';
 // Types
 import { GoodsImage } from '../../../../../../types/catalog';
 
@@ -25,7 +25,6 @@ const GoodsImages: React.FC<Props> = ({ images }) => {
   const handleFullImageOpen = () => setFullImage(true);
   const handleFullImageClose = () => setFullImage(false);
 
-
   return (
     <>
       <Box
@@ -39,7 +38,7 @@ const GoodsImages: React.FC<Props> = ({ images }) => {
       >
         {
           selected.url_sm
-            ? <img src={getImagePath(selected.url_sm)} alt={selected.label} style={{ width: `100%` }} />
+            ? <img src={`../../../../${selected.url_sm}`} alt={selected.label} style={{ width: `100%` }} />
             : <IconNoImage />
         }
       </Box>

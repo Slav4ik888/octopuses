@@ -7,6 +7,9 @@ import store from './client/redux/store.js';
 // MUI Stuff
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import themeFile from './client/utils/themes/theme';
+// Styles
+import "./client/utils/styles/normalize.css";
+import "./client/utils/styles/style.css";
 // Components
 import App from './client/app';
 
@@ -22,4 +25,4 @@ ReactDOM.render(
   , document.getElementById('root'));
  
   
-// git add . && git commit -m "fix12 webpack.config" && git push -u origin master
+// git add . && git commit -m "fix13 webpack.config" && git push -u origin master

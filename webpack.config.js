@@ -14,6 +14,8 @@ const outputDirectory = 'dist';
 
 
 const isDev = process.env.NODE_ENV === 'development';
+console.log('isDev: ', isDev);
+
 const isProd = !isDev;
 
 const devtool = () => isDev ? 'source-map' : false;
@@ -23,38 +25,36 @@ const target = isProd ? `browserslist` : `web`;
 
 
 export default {
-  entry: {
-    main: path.resolve(__dirname, `./src/index.tsx`)
-  },
-
-  output: {
-    path: path.resolve(__dirname, outputDirectory),
-    filename: `bundle.js`,
-    assetModuleFilename: `img/[hash][ext][query]`
-  },
-  
-  resolve: {
-    extensions: [`*`, `.js`, `.jsx`, `.json`, `.css`, `.ts`, `.tsx`]
-  },
-
-  devServer: {
-    port: 3000,
-    open: true,
-    historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:8080'
-    }
-  },
-  devtool: devtool(),
   mode,
   target,
 
+  output: {
+    path: path.resolve(__dirname, outputDirectory),
+    assetModuleFilename: `images/[hash][ext][query]`
+  },
+  
+  resolve: {
+    extensions: [`.js`, `.jsx`, `.json`, `.css`, `.ts`, `.tsx`]
+  },
+
+  devServer: {
+    static: 'dist',
+    hot: true,
+    // port: 3000,
+    // open: true,
+    // historyApiFallback: true,
+    // proxy: {
+    //   '/api': 'http://localhost:8080'
+    // }
+  },
+  devtool: devtool(),
+  
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: `Осьминожки - товары для здоровья`,
-      template: './public/index.html',
-      favicon: './public/img/favicon.png'
+      template: './src/index.html',
+      favicon: './src/client/images/favicon.png'
     }),
     new MiniCssExtractPlugin(),
     new Dotenv()
@@ -83,36 +83,41 @@ export default {
         use: "raw-loader",
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.(s[ac]|c)ss$/i,
+        // test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: { publicPath: `` }
+            // options: { publicPath: `` }
           },
-          {
-            loader: `style-loader`
-          },
+          // {
+          //   loader: `style-loader`
+          // },
           {
             loader: `css-loader`,
           },
-          {
-            loader: `sass-loader`,
-          }
+          // {
+          //   loader: `sass-loader`,
+          // }
         ]
       },
       {
-        test: /\.(jpe?g|png|gif)$/i,
+        test: /\.(png|svg|jpe?g|gif)$/i,
         type: 'asset',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 30 * 1024
-          }
-        }
+        // parser: { // Картинки меньше этого размера он куда то девает))
+        //   dataUrlCondition: {
+        //     maxSize: 30 * 1024
+        //   }
+        // }
       },
       {
-        test: /\.svg$/,
-        use: [`@svgr/webpack`],
+        test: /\.(ttf|woff|woff2|eot)$/,
+        type: 'asset/inline',
       }
+      // {
+      //   test: /\.svg$/,
+      //   use: [`@svgr/webpack`],
+      // }
     ]
   },
 }

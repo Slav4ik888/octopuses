@@ -12,7 +12,7 @@ import { isMaxFrequencyEnd } from './is-max-frequency.js';
 
 const log = clientLogger(`getCatalog`);
 
-;
+
 export default async function getCatalog() {
   if (isMaxFrequencyEnd(getStorageData(`Oct_LastGetGoogle`))) {
     const key = process.env.KEY;

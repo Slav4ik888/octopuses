@@ -1,11 +1,12 @@
 import * as React from 'react';
-import cl from 'classnames';
 // Routes
 import { Link } from 'react-router-dom';
 import { RouteType } from '../../../utils/routes/routes';
 // MUI Stuff
-// import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+// Images
+import Logo from '../../../images/logo_rec.png';
+console.log('Logo: ', Logo);
 // Types & Consts
 import { LogoBtnType } from '../../../../types/btn';
 
@@ -66,7 +67,7 @@ const LogoBtn: React.FC<Props> = ({ type }) => {
   return (
     <Link to={RouteType.ROOT}>
       <Box sx={logo} >
-        <img src="./img/logo_rec.png" alt="Логотип" style={{ height: `100%` }} />
+        <img src={Logo} alt="Логотип" style={{ height: `100%` }} />
       </Box>
     </Link>
   );

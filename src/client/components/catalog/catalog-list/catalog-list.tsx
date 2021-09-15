@@ -31,7 +31,10 @@ const CatalogList: React.FC<Props> = ({ loadingUI, catalog, selectedGoodsType })
   
 
   return (
-    <Box sx={{ display: `flex`, justifyContent: `space-evenly`, flexWrap: `wrap` }} >
+    <Box sx={{
+      display: `flex`, justifyContent: `space-evenly`, flexWrap: `wrap`,
+      mb: { xs: 2 }
+    }} >
       {
         filtredCatalog.map(goods => <GoodsCard key={goods.id} goods={goods} />)
       }

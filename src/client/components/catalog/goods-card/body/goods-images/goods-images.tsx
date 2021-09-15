@@ -9,7 +9,7 @@ import FullImageShow from './full-image-show/full-image-show';
 import { getGoodsPath } from '../../../../../utils/path/path';
 // Types
 import { GoodsImage } from '../../../../../../types/catalog';
-
+import imgs from '../../../utils/images';
 
 type Props = {
   images: Array<GoodsImage>;
@@ -38,7 +38,7 @@ const GoodsImages: React.FC<Props> = ({ images }) => {
       >
         {
           selected.url_sm
-            ? <img src={`../../../../${selected.url_sm}`} alt={selected.label} style={{ width: `100%` }} />
+            ? <img src={imgs[selected.url_sm]} alt={selected.label} style={{ width: `100%` }} />
             : <IconNoImage />
         }
       </Box>

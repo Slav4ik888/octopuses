@@ -67,15 +67,11 @@ export default {
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`,
-          // options: {
-          //   presets: [
-          //     ['@babel/preset-env', { targets: "defaults" }]
-          //   ]
-          // }
         },
       },
       {
         test: /\.(tsx|ts)?$/,
+        exclude: /node_modules/,
         loader: `ts-loader`
       },
       {
@@ -83,22 +79,15 @@ export default {
         use: "raw-loader",
       },
       {
-        test: /\.(s[ac]|c)ss$/i,
-        // test: /\.css$/,
+        test: /\.(s[ac]|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
             // options: { publicPath: `` }
           },
-          // {
-          //   loader: `style-loader`
-          // },
           {
             loader: `css-loader`,
           },
-          // {
-          //   loader: `sass-loader`,
-          // }
         ]
       },
       {

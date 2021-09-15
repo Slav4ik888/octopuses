@@ -9,6 +9,7 @@ import DialogInfo from '../../../../../dialogs/dialog-info/dialog-info';
 import { getGoodsPath } from '../../../../../../utils/path/path';
 // Types
 import { GoodsImage } from '../../../../../../../types/catalog';
+import imgs from '../../../../utils/images';
 
 
 type Props = {
@@ -37,7 +38,7 @@ const FullImageShow: React.FC<Props> = ({ open, item, onClose }) => {
   >
     {
       item.url
-        ? <img src={getGoodsPath(item.url)} alt={item.label} style={{ width: `100%` }} />
+        ? <img src={imgs[item.url]} alt={item.label} style={{ width: `100%` }} />
         : <IconNoImage width={`100%`} height={`100%`} />
     }
   </Box>);

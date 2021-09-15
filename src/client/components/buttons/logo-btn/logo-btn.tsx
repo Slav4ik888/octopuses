@@ -4,12 +4,10 @@ import { Link } from 'react-router-dom';
 import { RouteType } from '../../../utils/routes/routes';
 // MUI Stuff
 import Box from '@material-ui/core/Box';
-// Images
-import Logo from '../../../images/logo_rec.png';
-console.log('Logo: ', Logo);
 // Types & Consts
 import { LogoBtnType } from '../../../../types/btn';
 
+const logoPath = `https://firebasestorage.googleapis.com/v0/b/octopuses-9fa85.appspot.com/o/logo_rec.png?alt=media&token=3529a0ac-aeae-41b8-862b-0aa887a8e4eb`;
 
 const logeStyle = {
   borderStyle: `none`,
@@ -67,7 +65,7 @@ const LogoBtn: React.FC<Props> = ({ type }) => {
   return (
     <Link to={RouteType.ROOT}>
       <Box sx={logo} >
-        <img src={Logo} alt="Логотип" style={{ height: `100%` }} />
+        <img src={logoPath} alt="Логотип" style={{ height: `100%` }} />
       </Box>
     </Link>
   );

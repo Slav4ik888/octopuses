@@ -6,6 +6,7 @@ import { RouteType } from '../../../utils/routes/routes';
 import Box from '@material-ui/core/Box';
 // Types & Consts
 import { LogoBtnType } from '../../../../types/btn';
+// import Logo from './goal.jpeg';
 
 const logoPath = `https://firebasestorage.googleapis.com/v0/b/octopuses-9fa85.appspot.com/o/logo_rec.png?alt=media&token=3529a0ac-aeae-41b8-862b-0aa887a8e4eb`;
 

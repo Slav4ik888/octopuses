@@ -17,6 +17,9 @@ export default async function getCatalog() {
   if (isMaxFrequencyEnd(getStorageData(`Oct_LastGetGoogle`))) {
     const key = process.env.KEY;
     console.log('key: ', key);
+    console.log(`REACT_APP_KEY: `, process.env.REACT_APP_KEY);
+    console.log(`process.env: `, process.env);
+
     const identificator = `AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt`;
     const URL = `https://script.google.com/macros/s/${identificator}/exec?key=${key}`;
 

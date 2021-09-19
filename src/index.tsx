@@ -25,4 +25,4 @@ ReactDOM.render(
   , document.getElementById('root'));
  
   
-// git add . && git commit -m "add mb in list for mobile" && git push -u origin master
+// git add . && git commit -m "fix env key" && git push -u origin master

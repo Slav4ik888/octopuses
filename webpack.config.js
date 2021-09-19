@@ -40,9 +40,9 @@ export default {
   devServer: {
     static: 'dist',
     hot: true,
-    // port: 3000,
+    port: 3000,
     // open: true,
-    // historyApiFallback: true,
+    historyApiFallback: true,
     // proxy: {
     //   '/api': 'http://localhost:8080'
     // }

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../../redux/api.js';
 
 /**
  * ПОЛУЧАЕМ ДАННЫЕ С ГУГЛ ТАБЛИЦЫ
@@ -8,7 +8,12 @@ import axios from 'axios';
  */
 
 export async function getFromGoogleData(url) {
-  const response = await axios.get(url);
+  const response = await api.get(url);
   return response.data;
 };
+// export const getFromGoogleData = (url) => {
+//   return fetch(url)
+//     .then(response => response.json())
+//     .then(res => res);
+// };
 

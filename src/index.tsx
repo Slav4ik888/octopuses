@@ -25,4 +25,4 @@ ReactDOM.render(
   , document.getElementById('root'));
  
   
-// git add . && git commit -m "refact get from google" && git push -u origin master
+// git add . && git commit -m "fix key for google" && git push -u origin master

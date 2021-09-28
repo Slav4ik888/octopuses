@@ -15,11 +15,10 @@ const log = clientLogger(`getCatalog`);
 
 export default async function getCatalog() {
   if (isMaxFrequencyEnd(getStorageData(`Oct_LastGetGoogle`))) {
-    // const key = process.env.KEY || `AIzaSyDkhy` + `PRbE5LCstShrjfw` + `GTKdnQFT5Ib-rU`;
-
-    // const identificator = `AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt`;
-    // const URL = `https://script.google.com/macros/s/${identificator}/exec?key=${key}`;
-    const URL = `https://script.google.com/macros/s/AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt/exec`;
+    const key = `AIzaSyCoylJEk` + `JCJBah7jfg4RB` + `lb8ItUUFX8fK0`;
+    const identificator = `AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt`;
+    const URL = `https://script.google.com/macros/s/${identificator}/exec?key=${key}`;
+    // const URL = `https://script.google.com/macros/s/AKfycbxVefB9zobcTLA4ukxFMiscBUe5o27xn_wroYghMUHGBr1YJER4qAd_eO-VKf3dfTnt/exec`;
 
     store.dispatch({ type: uiActionType.LOADING_UI });
 
